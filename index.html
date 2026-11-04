@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pavan Bhargav Gajula, researcher at TCS Research working on computer vision and deep learning: generative models, representation learning and 3D.">
+<title>Pavan Bhargav Gajula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one wide column. Project rows with a narrow meta column beside the story, then plain lists for papers and patents. */
+:root {
+  color-scheme: light;
+  --bg: #f3f4f8;
+  --surface: #ffffff;
+  --fg: #12131b;
+  --muted: #565a6c;
+  --line: #d9dce6;
+  --accent: #3a33e6;
+  --on-accent: #ffffff;
+  --accent-soft: #e8e8fd;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0e13; --surface: #15171f; --fg: #eceef5; --muted: #a0a4b8; --line: #2a2d3a;
+    --accent: #9a97ff; --on-accent: #0d0e13; --accent-soft: #23244a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0e13; --surface: #15171f; --fg: #eceef5; --muted: #a0a4b8; --line: #2a2d3a;
+  --accent: #9a97ff; --on-accent: #0d0e13; --accent-soft: #23244a; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1rem/1.6 var(--body);
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+a { color: inherit; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+img { display: block; max-width: 100%; height: auto; }
+
+.mono { font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+
+/* top bar */
+.top { display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; align-items: baseline; padding-block: 22px; }
+.top .mark { font-family: var(--display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.top nav a { font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { padding-block: clamp(28px, 6vw, 72px) 0; }
+.eyebrow { color: var(--accent); margin: 0 0 14px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.9rem, 9vw, 6.4rem); line-height: .95; letter-spacing: -.03em; margin: 0 0 22px; text-wrap: balance; }
+.lede { font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.45; max-width: 40ch; margin: 0 0 26px; text-wrap: pretty; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; margin: 0; padding: 0; list-style: none; }
+.pill { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; font: 500 .9rem var(--body); text-decoration: none; color: var(--fg); cursor: pointer; }
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+.cap { margin: 10px 0 0; color: var(--muted); font-size: .85rem; max-width: 70ch; }
+.cap.mono { text-transform: none; letter-spacing: .02em; font-size: .72rem; }
+
+/* sections */
+section { padding-top: clamp(56px, 9vw, 104px); }
+.sec-head { display: flex; align-items: center; gap: 16px; margin: 0 0 32px; }
+.sec-head h2 { margin: 0; font-family: var(--mono); font-weight: 500; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.sec-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* projects */
+.project { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 20px 40px; padding-block: 36px; border-top: 1px solid var(--line); }
+.project:first-of-type { border-top: 0; padding-top: 0; }
+.meta { display: flex; flex-direction: column; gap: 8px; align-content: start; min-width: 0; }
+.tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+.tag.plain { color: var(--muted); }
+.meta .with { color: var(--muted); font-size: .85rem; margin-top: 6px; }
+.meta .out { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; font-size: .9rem; }
+.body { min-width: 0; }
+h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.55rem, 3.2vw, 2.2rem); line-height: 1.08; letter-spacing: -.015em; margin: 0 0 14px; text-wrap: balance; }
+.body p { margin: 0 0 14px; max-width: 64ch; text-wrap: pretty; }
+.fig { margin: 22px 0 0; min-width: 0; }
+.fig .frame { border: 1px solid var(--line); background: var(--surface); }
+.fig img { width: 100%; }
+.fig.white .frame { background: #fff; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.grid2 .fig { margin: 0; }
+
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); background: var(--surface); margin-top: 6px; }
+.seg button { font: 500 .85rem var(--body); padding: 9px 16px; min-height: 40px; border: 0; background: transparent; color: var(--fg); cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.seg button:not([aria-pressed="true"]):hover { color: var(--accent); }
+
+.pending { display: flex; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; margin: 0 0 8px; padding: 0 0 26px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .98rem; }
+.pending .tag { white-space: nowrap; }
+.note { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; color: var(--muted); max-width: 64ch; margin: 0; }
+
+/* lists */
+.year-block { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 8px 40px; padding-block: 22px; border-top: 1px solid var(--line); }
+.year-block:first-of-type { border-top: 0; padding-top: 0; }
+.year { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+.plist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.plist li { display: flex; flex-direction: column; gap: 2px; }
+.plist .t { font-weight: 600; }
+.plist .v { color: var(--muted); font-size: .9rem; }
+
+.patents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.patents li { display: flex; flex-direction: column; gap: 4px; padding-block: 18px; border-top: 1px solid var(--line); }
+.patents .s { font-family: var(--mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); }
+
+/* contact */
+.about { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; }
+.about p { margin: 0 0 14px; max-width: 58ch; text-wrap: pretty; }
+.contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.contact-list .k { display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.mail-row code { font: 500 .95rem var(--mono); user-select: all; word-break: break-all; }
+.copy { min-height: 34px; padding: 4px 12px; font-size: .8rem; }
+footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+
+@media (max-width: 820px) {
+  .project { grid-template-columns: 1fr; gap: 14px; }
+  .meta { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; }
+  .meta .out { flex-direction: row; flex-wrap: wrap; gap: 4px 16px; margin-top: 0; }
+  .meta .with { margin-top: 0; flex-basis: 100%; }
+  .about { grid-template-columns: 1fr; gap: 28px; }
+  .patents { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .year-block { grid-template-columns: 1fr; gap: 10px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .seg { display: flex; width: 100%; }
+  .seg button { flex: 1 1 auto; padding: 9px 6px; font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top" id="top">Pavan Bhargav Gajula</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#publications">Publications</a>
+      <a href="#patents">Patents</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow mono">Researcher &middot; TCS Research &middot; Computer vision &amp; deep learning</p>
+      <h1>Pavan Bhargav Gajula</h1>
+      <p class="lede">I research computer vision and deep learning, with applied work on generative models, representation learning and 3D, and take open-ended problems through to evaluated prototypes.</p>
+      <ul class="links">
+        <li><a class="pill" href="https://scholar.google.com/citations?hl=en&amp;user=2rxs6u8AAAAJ" target="_blank" rel="noopener">Google Scholar &#8599;</a></li>
+        <li><a class="pill" href="https://github.com/babloogpb1" target="_blank" rel="noopener">GitHub &#8599;</a></li>
+        <li><a class="pill" href="https://www.linkedin.com/in/gpb007/" target="_blank" rel="noopener">LinkedIn &#8599;</a></li>
+        <li><a class="pill" href="#contact">Email</a></li>
+      </ul>
+    </div>
+
+    <section id="work">
+      <div class="sec-head"><h2>Selected work</h2></div>
+
+      <p class="pending"><span class="tag">Eurographics 2027 &middot; Under review</span><span>Animatable facial rigs for characters whose faces follow no human or animal layout. More details to follow.</span></p>
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">ECCV 2026 Workshops &middot; AI4VA</span>
+          <span class="tag plain">Poster</span>
+          <div class="out">
+            <a href="https://openreview.net/pdf?id=ZH79sLBqgb" target="_blank" rel="noopener">Paper &#8599;</a>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Spatial Reflections: mosaics on 3D surfaces</h3>
+          <p>Mosaics of artworks are usually built for a flat image. This work asks what happens when the canvas is a 3D model. The method rebuilds a model's UV texture map as a mosaic of paintings, so the whole object is encased in artworks. Each painting keeps its aspect ratio, and the border around it acts as grout.</p>
+          <p>Two fixes make it work. Each UV island is rotated to match the direction of its object, found with PCA, so paintings do not appear upside down. Small objects get a larger share of the texture map, set by their volume against the whole model, so a painting on a wall stays recognizable. On a Starry Night view in a 3D Van Gogh's Bedroom, resizing lowered LPIPS from 0.32 to 0.12.</p>
+          <p>We tested it on a tiger, a sea house and the Bedroom scene with 18 objects, using 78,946 paintings from WikiArt.</p>
+
+          <figure class="fig white"><div class="frame"><img src="img/spatial-tiger.jpg" width="1490" height="595" loading="lazy" alt="A 3D tiger model encased in mosaics of paintings, with callouts to the paintings used on the head, paw, tail and body"></div><figcaption class="cap mono">A tiger encased in paintings. Callouts show the paintings on each part.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-pipeline.jpg" width="1475" height="575" loading="lazy" alt="Pipeline: UV texture map extraction, UV map manipulation with orientation matching and object-based resizing, segmentation, color and structure based retrieval, 3D spatial reflection"></div><figcaption class="cap mono">The pipeline: fix the UV map, segment it, retrieve paintings by color and structure, wrap it back on the model.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-starry.jpg" width="1275" height="320" loading="lazy" alt="Starry Night painting in a 3D room: the input view, the output without UV resizing where the painting is lost, and the output with UV resizing where it is recognizable"></div><figcaption class="cap mono">Why resizing matters: without it the painting on the wall is lost.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">SCA 2026 &middot; Poster</span>
+          <span class="tag plain">Presented in Barcelona</span>
+          <div class="out">
+            <a href="https://diglib.eg.org/server/api/core/bitstreams/6374342d-fbd1-4b50-90a9-5561ad1f226d/content" target="_blank" rel="noopener">Paper &#8599;</a>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Animating chairs, planters and lamps that have faces</h3>
+          <p>Facial expression transfer and automatic rigging are trained on human and animal bodies. Point them at a chair with a face and they break. We built a workflow that animates such objects from a single RGB video, and documented where each existing stage fails.</p>
+          <p>The fixes are a face for the object grounded in the FLAME head model, an open-mouth surface deformation that stops the lips from gluing together, and semantic rigging with SMPL-X motion retargeting.</p>
+
+          <figure class="fig white"><div class="frame"><img src="img/chair.jpg" width="1400" height="433" alt="A wooden chair with a face walking and changing expression across four frames"></div><figcaption class="cap mono">A chair takes on the expressions and gait of a human performer.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/workflow.jpg" width="1800" height="690" loading="lazy" alt="Workflow diagram: asset synthesis, hybrid capture, topology-agnostic facial deformation, semantic rigging and skinning, output animation"></div><figcaption class="cap mono">The end-to-end workflow, from a text prompt and a video to an animated object.</figcaption></figure>
+          <div class="grid2">
+            <figure class="fig"><div class="frame"><img src="img/expressions.jpg" width="1161" height="422" loading="lazy" alt="A human face on the left and the chair's matching expression on the right, in six frames"></div><figcaption class="cap mono">Source face (left) and target (right)</figcaption></figure>
+            <figure class="fig"><div class="frame"><img src="img/body.jpg" width="1400" height="346" loading="lazy" alt="A human body motion on top and the potted plant character repeating it below"></div><figcaption class="cap mono">Body motion retargeted onto a planter</figcaption></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">ICCV 2025 Workshops &middot; AI4VA</span>
+          <span class="tag plain">ICLR 2026 Blogposts</span>
+          <div class="out">
+            <a href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Enhancing_Artwork_Style_Clustering_via_Neural_Representation_Re-Alignment_ICCVW_2025_paper.html" target="_blank" rel="noopener">Paper &#8599;</a>
+            <a href="https://iclr-blogposts.github.io/2026/blog/2026/style-representations/" target="_blank" rel="noopener">Blog post &#8599;</a>
+            <a href="https://arxiv.org/abs/2409.08245" target="_blank" rel="noopener">arXiv &#8599;</a>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Sorting artworks by style, with a human in the loop</h3>
+          <p>Neural networks tend to group paintings by what they show. Style is a different question, and people disagree about its definition. This work lets a person steer the clustering with a few rounds of feedback, and re-aligns the representation itself so the groups follow that person's idea of style.</p>
+          <p>We compared six style representations under two definitions of style. With simulated expert feedback, Adjusted Rand Index on WikiArt-4k rose from about 0.25 to about 0.75 using contrastive style descriptors. Some representations bend to feedback easily and others hardly move, so the choice of representation matters as much as the feedback.</p>
+
+          <figure class="fig" aria-live="polite">
+            <div class="seg" role="group" aria-label="Amount of feedback shown">
+              <button type="button" aria-pressed="true" data-src="img/map-0.jpg" data-cap="No feedback. Colors are scattered inside every cluster.">No feedback</button>
+              <button type="button" aria-pressed="false" data-src="img/map-60.jpg" data-cap="After 60% of the feedback. Clusters begin to take one color each.">60% feedback</button>
+              <button type="button" aria-pressed="false" data-src="img/map-100.jpg" data-cap="After complete feedback. Most clusters hold a single art movement.">Complete feedback</button>
+            </div>
+            <div class="frame" style="margin-top:12px"><img id="mapimg" src="img/map-0.jpg" width="800" height="400" alt="Colored squares, one per artwork, arranged in outlined clusters"></div>
+            <figcaption class="cap"><span id="mapcap">No feedback. Colors are scattered inside every cluster.</span> Each square is an artwork colored by its art movement. Outlined regions are the 15 clusters.</figcaption>
+          </figure>
+
+          <div class="grid2">
+            <figure class="fig"><div class="frame"><img src="img/collage-before.jpg" width="1500" height="750" loading="lazy" alt="Artwork collage grouped into clusters before feedback"></div><figcaption class="cap mono">Before feedback</figcaption></figure>
+            <figure class="fig"><div class="frame"><img src="img/collage-after.jpg" width="1500" height="750" loading="lazy" alt="Artwork collage grouped into clusters after feedback"></div><figcaption class="cap mono">After complete feedback</figcaption></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">CVPR 2025 AI Art Gallery</span>
+          <span class="tag plain">ICCV 2025 Workshops &middot; AI4VA</span>
+          <div class="out">
+            <a href="https://thecvf-art.com/project.php?year=2025&amp;artist=composite-reflections&amp;id=854" target="_blank" rel="noopener">Artwork &#8599;</a>
+            <a href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Composite_Reflections_ICCVW_2025_paper.html" target="_blank" rel="noopener">Paper &#8599;</a>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Composite Reflections</h3>
+          <p>A mosaic method where the finished artwork stays tied to the pieces it is built from. A vision-language model (InternVL2) curates a themed collection, such as an apple-themed set from WikiArt. The target artwork is cut into a grid, and each cell is filled by color-histogram retrieval followed by structural similarity (SSIM) among the closest color matches. Pieces keep their aspect ratio through color-matched borders instead of being cropped. The method is also covered by a filed patent.</p>
+          <p>Three examples from the paper: Picasso's self-portrait rebuilt from 485 of his own works, Renoir's <em>Bal du moulin de la Galette</em> from 1,910 Impressionist works, and Van Gogh's <em>Apples</em> from 306 apple-themed works.</p>
+
+          <figure class="fig white"><div class="frame"><img src="img/composite-examples.jpg" width="1760" height="645" loading="lazy" alt="Three artworks, each shown as an input, its mosaic recreation, a zoomed snippet of tiny artworks, and sample tiles"></div><figcaption class="cap mono">Picasso, Renoir and Van Gogh, each rebuilt from related artworks.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/composite-pipeline.jpg" width="1770" height="635" loading="lazy" alt="Pipeline diagram: curated artwork collection, segment color histogram, cosine similarity, top retrievals, structural similarity, replacement segment"></div><figcaption class="cap mono">The pipeline: curate, match by color, choose by structure, replace the segment.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">CVPR 2025 AI Art Gallery</span>
+          <div class="out"><a href="https://thecvf-art.com/project.php?year=2025&amp;artist=ofstylebeesandbeehives&amp;id=868" target="_blank" rel="noopener">Artwork &#8599;</a><a href="https://youtu.be/cWCKd5NgzlE" target="_blank" rel="noopener">Animation &#8599;</a></div>
+        </div>
+        <div class="body">
+          <h3>Of Style Bees and Beehives</h3>
+          <p>An animation that uses a beehive as an allegory. When artworks are clustered by a neural style representation, they gather around central style figures, and the style definition a model has learned decides how it sees the whole collection.</p>
+        </div>
+      </article>
+
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">ICCC 2024</span>
+          <span class="tag plain">First author</span>
+          <div class="out">
+            <a href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_100.pdf" target="_blank" rel="noopener">Paper &#8599;</a>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Style-Frame: designing applications around artistic style</h3>
+          <p>Generative models can restyle an image, imitate an artist, or group a museum's collection by style. Teams building such applications had little guidance on which technology fits which job. Style-Frame is a design framework with two parts: a conceptual model and a process model for applying it.</p>
+          <p>The conceptual model has five dimensions: how the style is specified, how it is transformed, which generative technology is used, how the quality of the output is judged, and how the process itself is judged. The process model walks a team through six stages, from checking that style is really part of the problem to deploying and maintaining the result.</p>
+          <p>We worked it through on the MUNCH Museum archive in Oslo, using 7,411 Edvard Munch artworks sorted into five style categories by shading and color. Two problems went through the framework: restyling a given image in Munch's style, and generating new images in his style under user-defined controls.</p>
+
+          <figure class="fig white"><div class="frame"><img src="img/styleframe-model.jpg" width="1800" height="725" loading="lazy" alt="Mind map of the Style-Frame conceptual model: style specification, style transformation, generative AI technologies, artifact quality evaluation, process quality evaluation"></div><figcaption class="cap mono">The conceptual model: five dimensions of a style-driven application.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/styleframe-process.jpg" width="1780" height="385" loading="lazy" alt="Six-stage process model from checking whether artistic style is involved to developing, deploying and maintaining the application"></div><figcaption class="cap mono">The process model: six stages from problem check to deployment.</figcaption></figure>
+        </div>
+      </article>
+    </section>
+
+    <section id="publications">
+      <div class="sec-head"><h2>Publications</h2></div>
+
+      <div class="year-block">
+        <div class="year">2027</div>
+        <ul class="plist">
+          <li><span class="t">Expression rigs for non-humanoid characters</span><span class="v">Submitted to Eurographics 2027</span></li>
+        </ul>
+      </div>
+      <div class="year-block">
+        <div class="year">2026</div>
+        <ul class="plist">
+          <li><a class="t" href="https://openreview.net/pdf?id=ZH79sLBqgb" target="_blank" rel="noopener">Spatial Reflections: Semantic Mosaics on 3D Surfaces</a><span class="v">Poster, ECCV 2026 Workshops, AI for Visual Arts (AI4VA)</span></li>
+          <li><a class="t" href="https://diglib.eg.org/server/api/core/bitstreams/6374342d-fbd1-4b50-90a9-5561ad1f226d/content" target="_blank" rel="noopener">3D Animation of Anthropomorphized Objects</a><span class="v">Poster, ACM SIGGRAPH / Eurographics Symposium on Computer Animation (SCA) 2026</span></li>
+          <li><a class="t" href="https://iclr-blogposts.github.io/2026/blog/2026/style-representations/" target="_blank" rel="noopener">Artistic Style and the Play of Neural Style Representations</a><span class="v">ICLR 2026 Blogposts track</span></li>
+        </ul>
+      </div>
+      <div class="year-block">
+        <div class="year">2025</div>
+        <ul class="plist">
+          <li><a class="t" href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Enhancing_Artwork_Style_Clustering_via_Neural_Representation_Re-Alignment_ICCVW_2025_paper.html" target="_blank" rel="noopener">Enhancing Artwork Style Clustering via Neural Representation Re-Alignment</a><span class="v">ICCV 2025 Workshops, AI for Visual Arts (AI4VA)</span></li>
+          <li><a class="t" href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Composite_Reflections_ICCVW_2025_paper.html" target="_blank" rel="noopener">Composite Reflections</a><span class="v">ICCV 2025 Workshops, AI for Visual Arts (AI4VA)</span></li>
+          <li><a class="t" href="https://thecvf-art.com/project.php?year=2025&amp;artist=ofstylebeesandbeehives&amp;id=868" target="_blank" rel="noopener">Of Style Bees and Beehives</a><span class="v">CVPR 2025 AI Art Gallery</span></li>
+          <li><a class="t" href="https://thecvf-art.com/project.php?year=2025&amp;artist=composite-reflections&amp;id=854" target="_blank" rel="noopener">Composite Reflections</a><span class="v">CVPR 2025 AI Art Gallery</span></li>
+        </ul>
+      </div>
+      <div class="year-block">
+        <div class="year">2024</div>
+        <ul class="plist">
+          <li><a class="t" href="https://arxiv.org/abs/2409.08245" target="_blank" rel="noopener">Style-based Clustering of Visual Artworks and the Play of Neural Style-Representations</a><span class="v">arXiv:2409.08245</span></li>
+          <li><a class="t" href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_100.pdf" target="_blank" rel="noopener">Style-Frame: A Foundational Framework for Artistic Style-Driven Applications</a><span class="v">International Conference on Computational Creativity (ICCC) 2024</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="patents">
+      <div class="sec-head"><h2>Patents</h2></div>
+      <ul class="patents">
+        <li><span class="s">Filed</span><span>Methods and systems for style-based clustering of artworks with preference feedback</span></li>
+        <li><span class="s">Filed</span><span>Methods and Systems for Style-Based Clustering of Artworks by Aligning Neural Representations Through Centroid-Based Incorporation of Human Feedback</span></li>
+        <li><span class="s">Filed</span><span>Composite Reflections</span></li>
+        <li><span class="s">Filed</span><span>Method and system for designing style-based AI applications</span></li>
+        <li><span class="s">Filed</span><span>A system and method for art creation in collaborative and contemplative interaction with the artwork collection</span></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <div class="sec-head"><h2>About and contact</h2></div>
+      <div class="about">
+        <div>
+          <p>I have been a researcher at TCS Research in Bengaluru for five years, on the computational creativity team. My work is in computer vision and deep learning: generative models, representation learning and 3D, mostly applied to visual art. Other interests include agents and reinforcement learning.</p>
+          <p>I did my integrated B.Tech and M.Tech in Computer Engineering at IIITDM Kancheepuram, then stayed on as a project associate for a Ministry of Home Affairs project on detecting forged images and videos, before joining TCS. I also mentor newer researchers on the team.</p>
+          <p>Away from work: piano, ukulele and sketching.</p>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <span class="k">Email</span>
+            <div class="mail-row">
+              <code id="mail">pavanbhargav007@gmail.com</code>
+              <button type="button" class="pill copy" id="copy">Copy</button>
+            </div>
+          </li>
+          <li><span class="k">Papers</span><a href="https://scholar.google.com/citations?hl=en&amp;user=2rxs6u8AAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><span class="k">Code</span><a href="https://github.com/babloogpb1" target="_blank" rel="noopener">github.com/babloogpb1</a></li>
+          <li><span class="k">Network</span><a href="https://www.linkedin.com/in/gpb007/" target="_blank" rel="noopener">linkedin.com/in/gpb007</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Publishes as Pavan Gajula.</span>
+    <span>Figures are from the author's own open-access papers.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var img = document.getElementById('mapimg');
+  var cap = document.getElementById('mapcap');
+  var buttons = document.querySelectorAll('.seg button');
+  Array.prototype.forEach.call(buttons, function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(buttons, function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      img.src = b.getAttribute('data-src');
+      cap.textContent = b.getAttribute('data-cap');
+    });
+  });
+
+  var copy = document.getElementById('copy');
+  var mail = document.getElementById('mail');
+  function selectMail() {
+    var r = document.createRange(); r.selectNodeContents(mail);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  copy.addEventListener('click', function () {
+    var text = mail.textContent;
+    var done = function () { copy.textContent = 'Copied'; setTimeout(function () { copy.textContent = 'Copy'; }, 1800); };
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { selectMail(); copy.textContent = 'Press copy'; });
+    } catch (e) { selectMail(); copy.textContent = 'Press copy'; }
+  });
+})();
+</script>
+</body>
+</html>

@@ -104,6 +104,8 @@ h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.55rem, 3.
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
 .seg button:not([aria-pressed="true"]):hover { color: var(--accent); }
 
+.video { position: relative; aspect-ratio: 16 / 9; max-width: 760px; margin-top: 22px; border-radius: 10px; overflow: hidden; background: #000; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .pending { display: flex; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; margin: 0 0 8px; padding: 0 0 26px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .98rem; }
 .pending .tag { white-space: nowrap; }
 .note { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; color: var(--muted); max-width: 64ch; margin: 0; }
@@ -165,7 +167,7 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
     <div class="hero">
       <p class="eyebrow mono">Researcher &middot; TCS Research &middot; Computer vision &amp; deep learning</p>
       <h1>Pavan Bhargav Gajula</h1>
-      <p class="lede">I research computer vision and deep learning, with applied work on generative models, representation learning and 3D, and take open-ended problems through to evaluated prototypes.</p>
+      <p class="lede">I research computer vision and deep learning, with applied work on generative models, representation learning and 3D.</p>
       <ul class="links">
         <li><a class="pill" href="https://scholar.google.com/citations?hl=en&amp;user=2rxs6u8AAAAJ" target="_blank" rel="noopener">Google Scholar &#8599;</a></li>
         <li><a class="pill" href="https://github.com/pavanbhargav007" target="_blank" rel="noopener">GitHub &#8599;</a></li>
@@ -178,26 +180,6 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
       <div class="sec-head"><h2>Selected work</h2></div>
 
       <p class="pending"><span class="tag">Eurographics 2027 &middot; Under review</span><span>Animatable facial rigs for characters whose faces follow no human or animal layout. More details to follow.</span></p>
-
-      <article class="project">
-        <div class="meta">
-          <span class="tag">ECCV 2026 Workshops &middot; AI4VA</span>
-          <span class="tag plain">Poster</span>
-          <div class="out">
-            <a href="https://openreview.net/pdf?id=ZH79sLBqgb" target="_blank" rel="noopener">Paper &#8599;</a>
-          </div>
-        </div>
-        <div class="body">
-          <h3>Spatial Reflections: mosaics on 3D surfaces</h3>
-          <p>Mosaics of artworks are usually built for a flat image. This work asks what happens when the canvas is a 3D model. The method rebuilds a model's UV texture map as a mosaic of paintings, so the whole object is encased in artworks. Each painting keeps its aspect ratio, and the border around it acts as grout.</p>
-          <p>Two fixes make it work. Each UV island is rotated to match the direction of its object, found with PCA, so paintings do not appear upside down. Small objects get a larger share of the texture map, set by their volume against the whole model, so a painting on a wall stays recognizable. On a Starry Night view in a 3D Van Gogh's Bedroom, resizing lowered LPIPS from 0.32 to 0.12.</p>
-          <p>We tested it on a tiger, a sea house and the Bedroom scene with 18 objects, using 78,946 paintings from WikiArt.</p>
-
-          <figure class="fig white"><div class="frame"><img src="img/spatial-tiger.jpg" width="1490" height="595" loading="lazy" alt="A 3D tiger model encased in mosaics of paintings, with callouts to the paintings used on the head, paw, tail and body"></div><figcaption class="cap mono">A tiger encased in paintings. Callouts show the paintings on each part.</figcaption></figure>
-          <figure class="fig white"><div class="frame"><img src="img/spatial-pipeline.jpg" width="1475" height="575" loading="lazy" alt="Pipeline: UV texture map extraction, UV map manipulation with orientation matching and object-based resizing, segmentation, color and structure based retrieval, 3D spatial reflection"></div><figcaption class="cap mono">The pipeline: fix the UV map, segment it, retrieve paintings by color and structure, wrap it back on the model.</figcaption></figure>
-          <figure class="fig white"><div class="frame"><img src="img/spatial-starry.jpg" width="1275" height="320" loading="lazy" alt="Starry Night painting in a 3D room: the input view, the output without UV resizing where the painting is lost, and the output with UV resizing where it is recognizable"></div><figcaption class="cap mono">Why resizing matters: without it the painting on the wall is lost.</figcaption></figure>
-        </div>
-      </article>
 
       <article class="project">
         <div class="meta">
@@ -223,7 +205,28 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
 
       <article class="project">
         <div class="meta">
+          <span class="tag">ECCV 2026 Workshops &middot; AI4VA</span>
+          <span class="tag plain">Poster</span>
+          <div class="out">
+            <a href="https://openreview.net/pdf?id=ZH79sLBqgb" target="_blank" rel="noopener">Paper &#8599;</a>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Spatial Reflections: mosaics on 3D surfaces</h3>
+          <p>Mosaics of artworks are usually built for a flat image. This work asks what happens when the canvas is a 3D model. The method rebuilds a model's UV texture map as a mosaic of paintings, so the whole object is encased in artworks. Each painting keeps its aspect ratio, and the border around it acts as grout.</p>
+          <p>Two fixes make it work. Each UV island is rotated to match the direction of its object, found with PCA, so paintings do not appear upside down. Small objects get a larger share of the texture map, set by their volume against the whole model, so a painting on a wall stays recognizable. On a Starry Night view in a 3D Van Gogh's Bedroom, resizing lowered LPIPS from 0.32 to 0.12.</p>
+          <p>We tested it on a tiger, a sea house and the Bedroom scene with 18 objects, using 78,946 paintings from WikiArt.</p>
+
+          <figure class="fig white"><div class="frame"><img src="img/spatial-tiger.jpg" width="1490" height="595" loading="lazy" alt="A 3D tiger model encased in mosaics of paintings, with callouts to the paintings used on the head, paw, tail and body"></div><figcaption class="cap mono">A tiger encased in paintings. Callouts show the paintings on each part.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-pipeline.jpg" width="1475" height="575" loading="lazy" alt="Pipeline: UV texture map extraction, UV map manipulation with orientation matching and object-based resizing, segmentation, color and structure based retrieval, 3D spatial reflection"></div><figcaption class="cap mono">The pipeline: fix the UV map, segment it, retrieve paintings by color and structure, wrap it back on the model.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-starry.jpg" width="1275" height="320" loading="lazy" alt="Starry Night painting in a 3D room: the input view, the output without UV resizing where the painting is lost, and the output with UV resizing where it is recognizable"></div><figcaption class="cap mono">Why resizing matters: without it the painting on the wall is lost.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
           <span class="tag">ICCV 2025 Workshops &middot; AI4VA</span>
+          <span class="tag plain">Presented in Hawaii</span>
           <span class="tag plain">ICLR 2026 Blogposts</span>
           <div class="out">
             <a href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Enhancing_Artwork_Style_Clustering_via_Neural_Representation_Re-Alignment_ICCVW_2025_paper.html" target="_blank" rel="noopener">Paper &#8599;</a>
@@ -257,6 +260,7 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
         <div class="meta">
           <span class="tag">CVPR 2025 AI Art Gallery</span>
           <span class="tag plain">ICCV 2025 Workshops &middot; AI4VA</span>
+          <span class="tag plain">Oral presentation in Hawaii</span>
           <div class="out">
             <a href="https://thecvf-art.com/project.php?year=2025&amp;artist=composite-reflections&amp;id=854" target="_blank" rel="noopener">Artwork &#8599;</a>
             <a href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Composite_Reflections_ICCVW_2025_paper.html" target="_blank" rel="noopener">Paper &#8599;</a>
@@ -280,6 +284,7 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
         <div class="body">
           <h3>Of Style Bees and Beehives</h3>
           <p>An animation that uses a beehive as an allegory. When artworks are clustered by a neural style representation, they gather around central style figures, and the style definition a model has learned decides how it sees the whole collection.</p>
+          <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/cWCKd5NgzlE" title="Of Style Bees and Beehives, animation" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         </div>
       </article>
 
@@ -355,8 +360,8 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
       <div class="about">
         <div>
           <p>I have been a researcher at TCS Research in Bengaluru for five years, on the computational creativity team. My work is in computer vision and deep learning: generative models, representation learning and 3D, mostly applied to visual art. Other interests include agents and reinforcement learning.</p>
-          <p>I did my integrated B.Tech and M.Tech in Computer Engineering at IIITDM Kancheepuram, then stayed on as a project associate for a Ministry of Home Affairs project on detecting forged images and videos, before joining TCS. I also mentor newer researchers on the team.</p>
-          <p>Away from work: piano, ukulele and sketching.</p>
+          <p>I did my integrated B.Tech and M.Tech in Computer Engineering at IIITDM Kancheepuram, then stayed on as a project associate on a Ministry of Home Affairs project, building tools to detect forged images and videos that were deployed internally at the Bureau of Police Research and Development, before joining TCS. I also mentor newer researchers on the team.</p>
+          <p>Away from work: piano, ukulele, flute and sketching.</p>
         </div>
         <ul class="contact-list">
           <li>

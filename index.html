@@ -193,6 +193,7 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
           <h3>Animating chairs, planters and lamps that have faces</h3>
           <p>Facial expression transfer and automatic rigging are trained on human and animal bodies. Point them at a chair with a face and they break. We built a workflow that animates such objects from a single RGB video, and documented where each existing stage fails.</p>
           <p>The fixes are a face for the object grounded in the FLAME head model, an open-mouth surface deformation that stops the lips from gluing together, and semantic rigging with SMPL-X motion retargeting.</p>
+          <div class="video"><iframe src="https://drive.google.com/file/d/1xSRV2jT6NI7l2c0MOSv8wsTwB6yQvQIZ/preview" title="Teaser video: 3D animation of anthropomorphized objects" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 
           <figure class="fig white"><div class="frame"><img src="img/chair.jpg" width="1400" height="433" alt="A wooden chair with a face walking and changing expression across four frames"></div><figcaption class="cap mono">A chair takes on the expressions and gait of a human performer.</figcaption></figure>
           <figure class="fig white"><div class="frame"><img src="img/workflow.jpg" width="1800" height="690" loading="lazy" alt="Workflow diagram: asset synthesis, hybrid capture, topology-agnostic facial deformation, semantic rigging and skinning, output animation"></div><figcaption class="cap mono">The end-to-end workflow, from a text prompt and a video to an animated object.</figcaption></figure>
@@ -305,6 +306,22 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
 
           <figure class="fig white"><div class="frame"><img src="img/styleframe-model.jpg" width="1800" height="725" loading="lazy" alt="Mind map of the Style-Frame conceptual model: style specification, style transformation, generative AI technologies, artifact quality evaluation, process quality evaluation"></div><figcaption class="cap mono">The conceptual model: five dimensions of a style-driven application.</figcaption></figure>
           <figure class="fig white"><div class="frame"><img src="img/styleframe-process.jpg" width="1780" height="385" loading="lazy" alt="Six-stage process model from checking whether artistic style is involved to developing, deploying and maintaining the application"></div><figcaption class="cap mono">The process model: six stages from problem check to deployment.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <span class="tag">MHA sponsored project</span>
+          <span class="tag plain">IIITDM &middot; 2020&ndash;21</span>
+          <span class="tag plain">Deployed at BPR&amp;D</span>
+        </div>
+        <div class="body">
+          <h3>Detecting forged obscene images and videos</h3>
+          <p>A Ministry of Home Affairs sponsored project, carried out with the Bureau of Police Research and Development. The aim was to catch forged adult content, such as deepfaked faces, before it spreads on social networks. A video is checked for obscenity and then for forgery, in both pictures and sound.</p>
+          <p>Audio is usually ignored in video classification. We turned it into MEL spectrograms and classified them as images with EfficientNet-B2. Fine-tuning and focal loss with noisy-student weights lifted audio forgery accuracy from 88% to 94%, and fine-tuning VGG16 raised image obscenity accuracy from about 83% to 92%. Audio obscenity reached 93% and face forgery 92%.</p>
+          <p>I also built File Gateway, a desktop tool for Windows and Linux that watches the filesystem and removes flagged media on its own, in about 19 seconds for a 3-minute video. The research and tool demos were presented at BPR&amp;D in Delhi, and the tools were deployed internally there for law-enforcement monitoring.</p>
+
+          <figure class="fig white"><div class="frame"><img src="img/mha-pipeline.jpg" width="1560" height="712" loading="lazy" alt="Pipeline diagram: an input video is split into frames and audio, image and audio models vote on obscenity and on forgery, and a video is flagged only when it is both"></div><figcaption class="cap mono">Image and audio models vote separately on obscenity and on forgery. A video is flagged only when it is both.</figcaption></figure>
         </div>
       </article>
     </section>

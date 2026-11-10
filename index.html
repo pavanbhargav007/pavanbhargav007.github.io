@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Pavan Bhargav Gajula, researcher at TCS Research working on computer vision and deep learning: generative models, representation learning and 3D.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pavan Bhargav Gajula">
+<meta property="og:description" content="Researcher at TCS Research working on computer vision and deep learning: generative models, representation learning and 3D.">
+<meta property="og:url" content="https://pavanbhargav007.github.io/">
+<meta property="og:image" content="https://pavanbhargav007.github.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <title>Pavan Bhargav Gajula</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,6 +91,13 @@ section { padding-top: clamp(56px, 9vw, 104px); }
 /* projects */
 .project { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 20px 40px; padding-block: 36px; border-top: 1px solid var(--line); }
 .project:first-of-type { border-top: 0; padding-top: 0; }
+.pending + .project { padding-top: 36px; }
+.more { margin-top: 22px; }
+.more > summary { cursor: pointer; list-style: none; padding: 10px 0; color: var(--fg); font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::before { content: "+ "; color: var(--accent); }
+.more[open] > summary::before { content: "\2212 "; }
+.more > summary:hover { color: var(--accent); }
 .meta { display: flex; flex-direction: column; gap: 8px; align-content: start; min-width: 0; }
 .tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
 .tag.plain { color: var(--muted); }
@@ -104,7 +119,7 @@ h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.55rem, 3.
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
 .seg button:not([aria-pressed="true"]):hover { color: var(--accent); }
 
-.video { position: relative; aspect-ratio: 16 / 9; max-width: 760px; margin-top: 22px; border-radius: 10px; overflow: hidden; background: #000; }
+.video { position: relative; aspect-ratio: 16 / 9; margin-top: 22px; border-radius: 10px; overflow: hidden; background: #000; }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .pending { display: flex; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; margin: 0 0 8px; padding: 0 0 26px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .98rem; }
 .pending .tag { white-space: nowrap; }
@@ -147,6 +162,118 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
   .seg { display: flex; width: 100%; }
   .seg button { flex: 1 1 auto; padding: 9px 6px; font-size: .78rem; }
 }
+.sortdemo .frame { padding: 14px; }
+.sortdemo svg { display: block; width: 100%; height: auto; }
+.sortdemo .tile { cursor: pointer; transition: transform .7s cubic-bezier(.3,.7,.2,1); }
+.sortdemo .tile.hot { stroke: var(--fg); stroke-width: 3; }
+.sortdemo .box { fill: none; stroke: var(--line); stroke-width: 2; transition: stroke .4s; }
+.sd-bar { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 12px; }
+.sd-bar .pill { min-height: 36px; padding: 6px 14px; font-size: .85rem; }
+.sd-bar .pill[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.sd-bar .lbl { color: var(--muted); margin-left: 8px; }
+.sd-status { margin: 12px 0 0; font-family: var(--mono); font-size: .78rem; color: var(--fg); }
+.sd-status b { color: var(--accent); font-weight: 500; }
+.role { border-left: 3px solid var(--accent); padding: 2px 0 2px 14px; color: var(--muted); font-size: .95rem; }
+.role .mono { color: var(--fg); margin-right: 8px; }
+.sub-head { margin: 56px 0 4px; }
+.sub-head + .mw { border-top: 0; }
+.mw { border-top: 1px solid var(--line); }
+.mw:last-of-type { border-bottom: 1px solid var(--line); }
+.mw > summary { display: grid; grid-template-columns: 210px minmax(0, 1fr) auto; gap: 8px 40px; align-items: baseline; padding: 20px 0; cursor: pointer; list-style: none; }
+.mw > summary::-webkit-details-marker { display: none; }
+.mw .mt { font-family: var(--display); font-weight: 700; font-size: 1.25rem; line-height: 1.2; }
+.mw .ms { display: block; color: var(--muted); font: 400 .95rem/1.5 var(--body); margin-top: 4px; max-width: 64ch; }
+.mw .mx::before { content: "+"; color: var(--accent); font-family: var(--mono); font-size: 1.2rem; }
+.mw[open] .mx::before { content: "\2212"; }
+.mw > summary:hover .mt { color: var(--accent); }
+.mw .mwb { margin-left: 250px; padding: 4px 0 32px; }
+.mw .mwb .out { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: .9rem; margin: 0 0 14px; }
+.hero-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: end; }
+.portrait { width: 200px; height: 200px; object-fit: cover; border-radius: 16px; border: 1px solid var(--line); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .portrait { filter: brightness(.86); } }
+:root[data-theme="dark"] .portrait { filter: brightness(.86); }
+@media (max-width: 820px) { .hero-row { grid-template-columns: 1fr; } .portrait { width: 124px; height: 124px; order: -1; } }
+.tl { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.tl .k { display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+.tl .s { display: block; color: var(--muted); font-size: .9rem; }
+.contact-list.row { flex-direction: row; flex-wrap: wrap; gap: 20px 56px; }
+@media (max-width: 820px) {
+  .mw > summary { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; }
+  .mw > summary .tag { grid-column: 1 / -1; }
+  .mw .mwb { margin-left: 0; }
+}
+.chairanim{display:block;width:100%;height:auto;max-height:360px}
+.chairanim .ln{fill:none;stroke:var(--fg);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.chairanim .far{stroke:color-mix(in srgb,var(--fg) 45%,var(--surface))}
+.chairanim .mk{fill:var(--accent)}
+.chairanim .c1{fill:var(--accent)}
+.chairanim .c2{fill:color-mix(in srgb,var(--accent) 62%,var(--surface))}
+.chairanim .c3{fill:color-mix(in srgb,var(--accent) 78%,#000)}
+.chairanim .c4{fill:color-mix(in srgb,var(--accent) 55%,#000)}
+.chairanim .rj{stroke:var(--accent);stroke-width:10;stroke-linejoin:round}
+.chairanim .cf{fill:none;stroke:var(--on-accent);stroke-width:4.5;stroke-linecap:round}
+.chairanim .cff{fill:var(--on-accent)}
+.chairanim .lm{fill:none;stroke:color-mix(in srgb,var(--accent) 78%,#000);stroke-width:7;stroke-linecap:round}
+.chairanim .glow{fill:var(--accent);opacity:.16}
+.chairanim .pup{transform:translate(var(--px,2px),var(--py,0px));transition:transform .15s ease-out}
+.chairanim .poke{cursor:pointer}
+.chairanim .obj,.chairanim .lk{display:none}
+.chairanim[data-obj="0"] .o0,.chairanim[data-obj="1"] .o1,.chairanim[data-obj="2"] .o2{display:inline}
+.chairanim .mflat,.chairanim .mo,.chairanim .spark,.chairanim .link{opacity:0}
+.chairanim .link,.chairanim .spark{fill:none;stroke:var(--accent);stroke-linecap:round}
+.replay{background:none;border:0;padding:0;margin-left:8px;color:var(--accent);font:inherit;letter-spacing:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion: reduce){.replay,.anim-hint{display:none}}
+@media (prefers-reduced-motion: no-preference){
+.chairanim.run .a{animation-duration:15.5s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+.chairanim.run .lag{animation-delay:0.35s;animation-fill-mode:backwards}
+.chairanim.paused .a{animation-play-state:paused}
+.chairanim.run .scene{animation-name:k-scene}
+.chairanim.run .travel{animation-name:k-travel}
+.chairanim.run .root{animation-name:k-root}
+.chairanim.run .thA{animation-name:k-thA}
+.chairanim.run .knA{animation-name:k-knA}
+.chairanim.run .thB{animation-name:k-thB}
+.chairanim.run .knB{animation-name:k-knB}
+.chairanim.run .armN{animation-name:k-armN}
+.chairanim.run .armF{animation-name:k-armF}
+.chairanim.run .mflat{animation-name:k-mflat}
+.chairanim.run .msmile{animation-name:k-msmile}
+.chairanim.run .mo{animation-name:k-mo}
+.chairanim.run .oarmN{animation-name:k-oarmN}
+.chairanim.run .oarmF{animation-name:k-oarmF}
+.chairanim.run .pbrow{animation-name:k-pbrow}
+.chairanim.run .cbrow{animation-name:k-cbrow}
+.chairanim.run .peye{animation-name:k-peye}
+.chairanim.run .ceye{animation-name:k-ceye}
+.chairanim.run .wake{animation-name:k-wake}
+.chairanim.run .glow{animation-name:k-glow}
+.chairanim.run .stretch{animation-name:k-stretch}
+.chairanim.run .spark{animation-name:k-spark}
+.chairanim.run .link{animation-name:k-link}
+@keyframes k-scene{0%{opacity:0;animation-timing-function:ease-in-out}2.58%{opacity:0;animation-timing-function:ease-in-out}5.16%{opacity:1;animation-timing-function:ease-in-out}94.19%{opacity:1;animation-timing-function:ease-in-out}96.77%{opacity:0}100%{opacity:0}}
+@keyframes k-travel{0%{transform:translateX(0);animation-timing-function:linear}42.9%{transform:translateX(0);animation-timing-function:linear}43.87%{transform:translateX(8px);animation-timing-function:linear}59.35%{transform:translateX(183px);animation-timing-function:linear}60.65%{transform:translateX(190px);animation-timing-function:linear}73.87%{transform:translateX(190px);animation-timing-function:linear}89.35%{transform:translateX(0px);animation-timing-function:linear}100%{transform:translateX(0px);animation-timing-function:linear}}
+@keyframes k-root{0%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:translateY(6px) rotate(0deg);animation-timing-function:ease-in}23.23%{transform:translateY(-8px) rotate(0deg);animation-timing-function:ease-out}24.84%{transform:translateY(-42px) rotate(0deg);animation-timing-function:ease-in}25.94%{transform:translateY(-2px) rotate(0deg);animation-timing-function:ease-out}26.77%{transform:translateY(5px) rotate(0deg);animation-timing-function:ease-in-out}28.39%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:translateY(0.0px) rotate(0deg);animation-timing-function:linear}44.35%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}44.84%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}45.32%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}45.81%{transform:translateY(3.9px) rotate(0deg);animation-timing-function:linear}46.29%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}46.77%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}47.26%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}47.74%{transform:translateY(0.0px) rotate(0deg);animation-timing-function:linear}48.23%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}48.71%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}49.19%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}49.68%{transform:translateY(3.9px) rotate(0deg);animation-timing-function:linear}50.16%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}50.65%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}51.13%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}51.61%{transform:translateY(0.0px) rotate(0deg);animation-timing-function:linear}52.1%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}52.58%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}53.06%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}53.55%{transform:translateY(3.9px) rotate(0deg);animation-timing-function:linear}54.03%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}54.52%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}55%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}55.48%{transform:translateY(0.0px) rotate(0deg);animation-timing-function:linear}55.97%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}56.45%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}56.94%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}57.42%{transform:translateY(3.9px) rotate(0deg);animation-timing-function:linear}57.9%{transform:translateY(2.2px) rotate(0deg);animation-timing-function:linear}58.39%{transform:translateY(1.0px) rotate(0deg);animation-timing-function:linear}58.87%{transform:translateY(0.2px) rotate(0deg);animation-timing-function:linear}59.35%{transform:translateY(0.0px) rotate(0deg);animation-timing-function:linear}61.29%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}63.23%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}64.19%{transform:translateY(3px) rotate(0deg);animation-timing-function:ease-in}64.97%{transform:translateY(-6px) rotate(-3deg);animation-timing-function:ease-out}66.13%{transform:translateY(-22px) rotate(-7deg);animation-timing-function:ease-in}67.29%{transform:translateY(3px) rotate(0deg);animation-timing-function:ease-in}68.06%{transform:translateY(-6px) rotate(3deg);animation-timing-function:ease-out}69.23%{transform:translateY(-22px) rotate(7deg);animation-timing-function:ease-in}70.39%{transform:translateY(3px) rotate(0deg);animation-timing-function:ease-in-out}71.61%{transform:translateY(0px) rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:translateY(3px) rotate(5deg);animation-timing-function:ease-in-out}89.35%{transform:translateY(3px) rotate(5deg);animation-timing-function:ease-in-out}91.29%{transform:translateY(0px) rotate(0deg)}100%{transform:translateY(0px) rotate(0deg)}}
+@keyframes k-thA{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(-25deg);animation-timing-function:ease-in}23.23%{transform:rotate(0deg);animation-timing-function:ease-out}24.84%{transform:rotate(-15deg);animation-timing-function:ease-in}25.94%{transform:rotate(-5deg);animation-timing-function:ease-out}26.77%{transform:rotate(-22deg);animation-timing-function:ease-in-out}28.39%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(0.0deg);animation-timing-function:linear}44.35%{transform:rotate(5.0deg);animation-timing-function:linear}44.84%{transform:rotate(10.0deg);animation-timing-function:linear}45.32%{transform:rotate(15.0deg);animation-timing-function:linear}45.81%{transform:rotate(20.0deg);animation-timing-function:linear}46.29%{transform:rotate(14.0deg);animation-timing-function:linear}46.77%{transform:rotate(8.0deg);animation-timing-function:linear}47.26%{transform:rotate(-2.0deg);animation-timing-function:linear}47.74%{transform:rotate(-12.0deg);animation-timing-function:linear}48.23%{transform:rotate(-17.0deg);animation-timing-function:linear}48.71%{transform:rotate(-22.0deg);animation-timing-function:linear}49.19%{transform:rotate(-22.5deg);animation-timing-function:linear}49.68%{transform:rotate(-20.0deg);animation-timing-function:linear}50.16%{transform:rotate(-15.0deg);animation-timing-function:linear}50.65%{transform:rotate(-10.0deg);animation-timing-function:linear}51.13%{transform:rotate(-5.0deg);animation-timing-function:linear}51.61%{transform:rotate(0.0deg);animation-timing-function:linear}52.1%{transform:rotate(5.0deg);animation-timing-function:linear}52.58%{transform:rotate(10.0deg);animation-timing-function:linear}53.06%{transform:rotate(15.0deg);animation-timing-function:linear}53.55%{transform:rotate(20.0deg);animation-timing-function:linear}54.03%{transform:rotate(14.0deg);animation-timing-function:linear}54.52%{transform:rotate(8.0deg);animation-timing-function:linear}55%{transform:rotate(-2.0deg);animation-timing-function:linear}55.48%{transform:rotate(-12.0deg);animation-timing-function:linear}55.97%{transform:rotate(-17.0deg);animation-timing-function:linear}56.45%{transform:rotate(-22.0deg);animation-timing-function:linear}56.94%{transform:rotate(-22.5deg);animation-timing-function:linear}57.42%{transform:rotate(-20.0deg);animation-timing-function:linear}57.9%{transform:rotate(-15.0deg);animation-timing-function:linear}58.39%{transform:rotate(-10.0deg);animation-timing-function:linear}58.87%{transform:rotate(-5.0deg);animation-timing-function:linear}59.35%{transform:rotate(-0.0deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.23%{transform:rotate(0deg);animation-timing-function:ease-in-out}64.19%{transform:rotate(-18deg);animation-timing-function:ease-in}64.97%{transform:rotate(0deg);animation-timing-function:ease-out}66.13%{transform:rotate(-10deg);animation-timing-function:ease-in}67.29%{transform:rotate(-18deg);animation-timing-function:ease-in}68.06%{transform:rotate(0deg);animation-timing-function:ease-out}69.23%{transform:rotate(-10deg);animation-timing-function:ease-in}70.39%{transform:rotate(-18deg);animation-timing-function:ease-in-out}71.61%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(18deg);animation-timing-function:linear}75.81%{transform:rotate(-5deg);animation-timing-function:linear}77.68%{transform:rotate(-25deg);animation-timing-function:linear}77.74%{transform:rotate(-25deg);animation-timing-function:linear}81.55%{transform:rotate(18deg);animation-timing-function:linear}81.61%{transform:rotate(18deg);animation-timing-function:linear}83.55%{transform:rotate(-5deg);animation-timing-function:linear}85.42%{transform:rotate(-25deg);animation-timing-function:linear}85.48%{transform:rotate(-25deg);animation-timing-function:linear}89.29%{transform:rotate(18deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-knA{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(50deg);animation-timing-function:ease-in}23.23%{transform:rotate(0deg);animation-timing-function:ease-out}24.84%{transform:rotate(30deg);animation-timing-function:ease-in}25.94%{transform:rotate(10deg);animation-timing-function:ease-out}26.77%{transform:rotate(44deg);animation-timing-function:ease-in-out}28.39%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(5.0deg);animation-timing-function:linear}44.35%{transform:rotate(6.3deg);animation-timing-function:linear}44.84%{transform:rotate(7.5deg);animation-timing-function:linear}45.32%{transform:rotate(8.7deg);animation-timing-function:linear}45.81%{transform:rotate(10.0deg);animation-timing-function:linear}46.29%{transform:rotate(32.5deg);animation-timing-function:linear}46.77%{transform:rotate(55.0deg);animation-timing-function:linear}47.26%{transform:rotate(52.5deg);animation-timing-function:linear}47.74%{transform:rotate(50.0deg);animation-timing-function:linear}48.23%{transform:rotate(33.3deg);animation-timing-function:linear}48.71%{transform:rotate(16.7deg);animation-timing-function:linear}49.19%{transform:rotate(6.2deg);animation-timing-function:linear}49.68%{transform:rotate(0.0deg);animation-timing-function:linear}50.16%{transform:rotate(1.2deg);animation-timing-function:linear}50.65%{transform:rotate(2.5deg);animation-timing-function:linear}51.13%{transform:rotate(3.8deg);animation-timing-function:linear}51.61%{transform:rotate(5.0deg);animation-timing-function:linear}52.1%{transform:rotate(6.2deg);animation-timing-function:linear}52.58%{transform:rotate(7.5deg);animation-timing-function:linear}53.06%{transform:rotate(8.8deg);animation-timing-function:linear}53.55%{transform:rotate(10.0deg);animation-timing-function:linear}54.03%{transform:rotate(32.5deg);animation-timing-function:linear}54.52%{transform:rotate(55.0deg);animation-timing-function:linear}55%{transform:rotate(52.5deg);animation-timing-function:linear}55.48%{transform:rotate(50.0deg);animation-timing-function:linear}55.97%{transform:rotate(33.3deg);animation-timing-function:linear}56.45%{transform:rotate(16.7deg);animation-timing-function:linear}56.94%{transform:rotate(6.3deg);animation-timing-function:linear}57.42%{transform:rotate(0.0deg);animation-timing-function:linear}57.9%{transform:rotate(1.2deg);animation-timing-function:linear}58.39%{transform:rotate(2.5deg);animation-timing-function:linear}58.87%{transform:rotate(3.8deg);animation-timing-function:linear}59.35%{transform:rotate(5.0deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.23%{transform:rotate(0deg);animation-timing-function:ease-in-out}64.19%{transform:rotate(36deg);animation-timing-function:ease-in}64.97%{transform:rotate(0deg);animation-timing-function:ease-out}66.13%{transform:rotate(20deg);animation-timing-function:ease-in}67.29%{transform:rotate(36deg);animation-timing-function:ease-in}68.06%{transform:rotate(0deg);animation-timing-function:ease-out}69.23%{transform:rotate(20deg);animation-timing-function:ease-in}70.39%{transform:rotate(36deg);animation-timing-function:ease-in-out}71.61%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(10deg);animation-timing-function:linear}75.81%{transform:rotate(40deg);animation-timing-function:linear}77.68%{transform:rotate(20deg);animation-timing-function:linear}77.74%{transform:rotate(0deg);animation-timing-function:linear}81.55%{transform:rotate(0deg);animation-timing-function:linear}81.61%{transform:rotate(10deg);animation-timing-function:linear}83.55%{transform:rotate(40deg);animation-timing-function:linear}85.42%{transform:rotate(20deg);animation-timing-function:linear}85.48%{transform:rotate(0deg);animation-timing-function:linear}89.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-thB{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(-25deg);animation-timing-function:ease-in}23.23%{transform:rotate(0deg);animation-timing-function:ease-out}24.84%{transform:rotate(-15deg);animation-timing-function:ease-in}25.94%{transform:rotate(-5deg);animation-timing-function:ease-out}26.77%{transform:rotate(-22deg);animation-timing-function:ease-in-out}28.39%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(-12.0deg);animation-timing-function:linear}44.35%{transform:rotate(-17.0deg);animation-timing-function:linear}44.84%{transform:rotate(-22.0deg);animation-timing-function:linear}45.32%{transform:rotate(-22.5deg);animation-timing-function:linear}45.81%{transform:rotate(-20.0deg);animation-timing-function:linear}46.29%{transform:rotate(-15.0deg);animation-timing-function:linear}46.77%{transform:rotate(-10.0deg);animation-timing-function:linear}47.26%{transform:rotate(-5.0deg);animation-timing-function:linear}47.74%{transform:rotate(-0.0deg);animation-timing-function:linear}48.23%{transform:rotate(5.0deg);animation-timing-function:linear}48.71%{transform:rotate(10.0deg);animation-timing-function:linear}49.19%{transform:rotate(15.0deg);animation-timing-function:linear}49.68%{transform:rotate(20.0deg);animation-timing-function:linear}50.16%{transform:rotate(14.0deg);animation-timing-function:linear}50.65%{transform:rotate(8.0deg);animation-timing-function:linear}51.13%{transform:rotate(-2.0deg);animation-timing-function:linear}51.61%{transform:rotate(-12.0deg);animation-timing-function:linear}52.1%{transform:rotate(-17.0deg);animation-timing-function:linear}52.58%{transform:rotate(-22.0deg);animation-timing-function:linear}53.06%{transform:rotate(-22.5deg);animation-timing-function:linear}53.55%{transform:rotate(-20.0deg);animation-timing-function:linear}54.03%{transform:rotate(-15.0deg);animation-timing-function:linear}54.52%{transform:rotate(-10.0deg);animation-timing-function:linear}55%{transform:rotate(-5.0deg);animation-timing-function:linear}55.48%{transform:rotate(0.0deg);animation-timing-function:linear}55.97%{transform:rotate(5.0deg);animation-timing-function:linear}56.45%{transform:rotate(10.0deg);animation-timing-function:linear}56.94%{transform:rotate(15.0deg);animation-timing-function:linear}57.42%{transform:rotate(20.0deg);animation-timing-function:linear}57.9%{transform:rotate(14.0deg);animation-timing-function:linear}58.39%{transform:rotate(8.0deg);animation-timing-function:linear}58.87%{transform:rotate(-2.0deg);animation-timing-function:linear}59.35%{transform:rotate(-12.0deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.23%{transform:rotate(0deg);animation-timing-function:ease-in-out}64.19%{transform:rotate(-18deg);animation-timing-function:ease-in}64.97%{transform:rotate(0deg);animation-timing-function:ease-out}66.13%{transform:rotate(-10deg);animation-timing-function:ease-in}67.29%{transform:rotate(-18deg);animation-timing-function:ease-in}68.06%{transform:rotate(0deg);animation-timing-function:ease-out}69.23%{transform:rotate(-10deg);animation-timing-function:ease-in}70.39%{transform:rotate(-18deg);animation-timing-function:ease-in-out}71.61%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(-25deg);animation-timing-function:linear}77.68%{transform:rotate(18deg);animation-timing-function:linear}77.74%{transform:rotate(18deg);animation-timing-function:linear}79.68%{transform:rotate(-5deg);animation-timing-function:linear}81.55%{transform:rotate(-25deg);animation-timing-function:linear}81.61%{transform:rotate(-25deg);animation-timing-function:linear}85.42%{transform:rotate(18deg);animation-timing-function:linear}85.48%{transform:rotate(18deg);animation-timing-function:linear}87.42%{transform:rotate(-5deg);animation-timing-function:linear}89.29%{transform:rotate(-25deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-knB{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(50deg);animation-timing-function:ease-in}23.23%{transform:rotate(0deg);animation-timing-function:ease-out}24.84%{transform:rotate(30deg);animation-timing-function:ease-in}25.94%{transform:rotate(10deg);animation-timing-function:ease-out}26.77%{transform:rotate(44deg);animation-timing-function:ease-in-out}28.39%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(50.0deg);animation-timing-function:linear}44.35%{transform:rotate(33.3deg);animation-timing-function:linear}44.84%{transform:rotate(16.7deg);animation-timing-function:linear}45.32%{transform:rotate(6.3deg);animation-timing-function:linear}45.81%{transform:rotate(0.0deg);animation-timing-function:linear}46.29%{transform:rotate(1.2deg);animation-timing-function:linear}46.77%{transform:rotate(2.5deg);animation-timing-function:linear}47.26%{transform:rotate(3.8deg);animation-timing-function:linear}47.74%{transform:rotate(5.0deg);animation-timing-function:linear}48.23%{transform:rotate(6.2deg);animation-timing-function:linear}48.71%{transform:rotate(7.5deg);animation-timing-function:linear}49.19%{transform:rotate(8.8deg);animation-timing-function:linear}49.68%{transform:rotate(10.0deg);animation-timing-function:linear}50.16%{transform:rotate(32.5deg);animation-timing-function:linear}50.65%{transform:rotate(55.0deg);animation-timing-function:linear}51.13%{transform:rotate(52.5deg);animation-timing-function:linear}51.61%{transform:rotate(50.0deg);animation-timing-function:linear}52.1%{transform:rotate(33.3deg);animation-timing-function:linear}52.58%{transform:rotate(16.7deg);animation-timing-function:linear}53.06%{transform:rotate(6.3deg);animation-timing-function:linear}53.55%{transform:rotate(0.0deg);animation-timing-function:linear}54.03%{transform:rotate(1.2deg);animation-timing-function:linear}54.52%{transform:rotate(2.5deg);animation-timing-function:linear}55%{transform:rotate(3.8deg);animation-timing-function:linear}55.48%{transform:rotate(5.0deg);animation-timing-function:linear}55.97%{transform:rotate(6.3deg);animation-timing-function:linear}56.45%{transform:rotate(7.5deg);animation-timing-function:linear}56.94%{transform:rotate(8.7deg);animation-timing-function:linear}57.42%{transform:rotate(10.0deg);animation-timing-function:linear}57.9%{transform:rotate(32.5deg);animation-timing-function:linear}58.39%{transform:rotate(55.0deg);animation-timing-function:linear}58.87%{transform:rotate(52.5deg);animation-timing-function:linear}59.35%{transform:rotate(50.0deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.23%{transform:rotate(0deg);animation-timing-function:ease-in-out}64.19%{transform:rotate(36deg);animation-timing-function:ease-in}64.97%{transform:rotate(0deg);animation-timing-function:ease-out}66.13%{transform:rotate(20deg);animation-timing-function:ease-in}67.29%{transform:rotate(36deg);animation-timing-function:ease-in}68.06%{transform:rotate(0deg);animation-timing-function:ease-out}69.23%{transform:rotate(20deg);animation-timing-function:ease-in}70.39%{transform:rotate(36deg);animation-timing-function:ease-in-out}71.61%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(0deg);animation-timing-function:linear}77.68%{transform:rotate(0deg);animation-timing-function:linear}77.74%{transform:rotate(10deg);animation-timing-function:linear}79.68%{transform:rotate(40deg);animation-timing-function:linear}81.55%{transform:rotate(20deg);animation-timing-function:linear}81.61%{transform:rotate(0deg);animation-timing-function:linear}85.42%{transform:rotate(0deg);animation-timing-function:linear}85.48%{transform:rotate(10deg);animation-timing-function:linear}87.42%{transform:rotate(40deg);animation-timing-function:linear}89.29%{transform:rotate(20deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-armN{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}6.45%{transform:rotate(0deg);animation-timing-function:ease-in-out}9.35%{transform:rotate(-102deg);animation-timing-function:ease-in-out}16.13%{transform:rotate(-102deg);animation-timing-function:ease-in-out}19.03%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(26deg);animation-timing-function:ease-in-out}23.87%{transform:rotate(-46deg);animation-timing-function:ease-in-out}27.74%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(-10.8deg);animation-timing-function:linear}44.35%{transform:rotate(-15.3deg);animation-timing-function:linear}44.84%{transform:rotate(-19.8deg);animation-timing-function:linear}45.32%{transform:rotate(-20.3deg);animation-timing-function:linear}45.81%{transform:rotate(-18.0deg);animation-timing-function:linear}46.29%{transform:rotate(-13.5deg);animation-timing-function:linear}46.77%{transform:rotate(-9.0deg);animation-timing-function:linear}47.26%{transform:rotate(-4.5deg);animation-timing-function:linear}47.74%{transform:rotate(-0.0deg);animation-timing-function:linear}48.23%{transform:rotate(4.5deg);animation-timing-function:linear}48.71%{transform:rotate(9.0deg);animation-timing-function:linear}49.19%{transform:rotate(13.5deg);animation-timing-function:linear}49.68%{transform:rotate(18.0deg);animation-timing-function:linear}50.16%{transform:rotate(12.6deg);animation-timing-function:linear}50.65%{transform:rotate(7.2deg);animation-timing-function:linear}51.13%{transform:rotate(-1.8deg);animation-timing-function:linear}51.61%{transform:rotate(-10.8deg);animation-timing-function:linear}52.1%{transform:rotate(-15.3deg);animation-timing-function:linear}52.58%{transform:rotate(-19.8deg);animation-timing-function:linear}53.06%{transform:rotate(-20.2deg);animation-timing-function:linear}53.55%{transform:rotate(-18.0deg);animation-timing-function:linear}54.03%{transform:rotate(-13.5deg);animation-timing-function:linear}54.52%{transform:rotate(-9.0deg);animation-timing-function:linear}55%{transform:rotate(-4.5deg);animation-timing-function:linear}55.48%{transform:rotate(0.0deg);animation-timing-function:linear}55.97%{transform:rotate(4.5deg);animation-timing-function:linear}56.45%{transform:rotate(9.0deg);animation-timing-function:linear}56.94%{transform:rotate(13.5deg);animation-timing-function:linear}57.42%{transform:rotate(18.0deg);animation-timing-function:linear}57.9%{transform:rotate(12.6deg);animation-timing-function:linear}58.39%{transform:rotate(7.2deg);animation-timing-function:linear}58.87%{transform:rotate(-1.8deg);animation-timing-function:linear}59.35%{transform:rotate(-10.8deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.55%{transform:rotate(0deg);animation-timing-function:ease-in-out}65.16%{transform:rotate(-142deg);animation-timing-function:ease-in-out}66.13%{transform:rotate(-130deg);animation-timing-function:ease-in-out}67.29%{transform:rotate(-148deg);animation-timing-function:ease-in-out}69.23%{transform:rotate(-130deg);animation-timing-function:ease-in-out}70.65%{transform:rotate(-142deg);animation-timing-function:ease-in-out}72.58%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(22deg);animation-timing-function:ease-in-out}77.74%{transform:rotate(-22deg);animation-timing-function:ease-in-out}81.61%{transform:rotate(22deg);animation-timing-function:ease-in-out}85.48%{transform:rotate(-22deg);animation-timing-function:ease-in-out}89.35%{transform:rotate(22deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-armF{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(26deg);animation-timing-function:ease-in-out}23.87%{transform:rotate(-46deg);animation-timing-function:ease-in-out}27.74%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(0.0deg);animation-timing-function:linear}44.35%{transform:rotate(4.5deg);animation-timing-function:linear}44.84%{transform:rotate(9.0deg);animation-timing-function:linear}45.32%{transform:rotate(13.5deg);animation-timing-function:linear}45.81%{transform:rotate(18.0deg);animation-timing-function:linear}46.29%{transform:rotate(12.6deg);animation-timing-function:linear}46.77%{transform:rotate(7.2deg);animation-timing-function:linear}47.26%{transform:rotate(-1.8deg);animation-timing-function:linear}47.74%{transform:rotate(-10.8deg);animation-timing-function:linear}48.23%{transform:rotate(-15.3deg);animation-timing-function:linear}48.71%{transform:rotate(-19.8deg);animation-timing-function:linear}49.19%{transform:rotate(-20.2deg);animation-timing-function:linear}49.68%{transform:rotate(-18.0deg);animation-timing-function:linear}50.16%{transform:rotate(-13.5deg);animation-timing-function:linear}50.65%{transform:rotate(-9.0deg);animation-timing-function:linear}51.13%{transform:rotate(-4.5deg);animation-timing-function:linear}51.61%{transform:rotate(0.0deg);animation-timing-function:linear}52.1%{transform:rotate(4.5deg);animation-timing-function:linear}52.58%{transform:rotate(9.0deg);animation-timing-function:linear}53.06%{transform:rotate(13.5deg);animation-timing-function:linear}53.55%{transform:rotate(18.0deg);animation-timing-function:linear}54.03%{transform:rotate(12.6deg);animation-timing-function:linear}54.52%{transform:rotate(7.2deg);animation-timing-function:linear}55%{transform:rotate(-1.8deg);animation-timing-function:linear}55.48%{transform:rotate(-10.8deg);animation-timing-function:linear}55.97%{transform:rotate(-15.3deg);animation-timing-function:linear}56.45%{transform:rotate(-19.8deg);animation-timing-function:linear}56.94%{transform:rotate(-20.3deg);animation-timing-function:linear}57.42%{transform:rotate(-18.0deg);animation-timing-function:linear}57.9%{transform:rotate(-13.5deg);animation-timing-function:linear}58.39%{transform:rotate(-9.0deg);animation-timing-function:linear}58.87%{transform:rotate(-4.5deg);animation-timing-function:linear}59.35%{transform:rotate(-0.0deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.55%{transform:rotate(0deg);animation-timing-function:ease-in-out}65.16%{transform:rotate(142deg);animation-timing-function:ease-in-out}66.13%{transform:rotate(154deg);animation-timing-function:ease-in-out}67.29%{transform:rotate(136deg);animation-timing-function:ease-in-out}69.23%{transform:rotate(154deg);animation-timing-function:ease-in-out}70.65%{transform:rotate(142deg);animation-timing-function:ease-in-out}72.58%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(-22deg);animation-timing-function:ease-in-out}77.74%{transform:rotate(22deg);animation-timing-function:ease-in-out}81.61%{transform:rotate(-22deg);animation-timing-function:ease-in-out}85.48%{transform:rotate(22deg);animation-timing-function:ease-in-out}89.35%{transform:rotate(-22deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-oarmN{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(26deg);animation-timing-function:ease-in-out}23.87%{transform:rotate(-46deg);animation-timing-function:ease-in-out}27.74%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(-10.8deg);animation-timing-function:linear}44.35%{transform:rotate(-15.3deg);animation-timing-function:linear}44.84%{transform:rotate(-19.8deg);animation-timing-function:linear}45.32%{transform:rotate(-20.3deg);animation-timing-function:linear}45.81%{transform:rotate(-18.0deg);animation-timing-function:linear}46.29%{transform:rotate(-13.5deg);animation-timing-function:linear}46.77%{transform:rotate(-9.0deg);animation-timing-function:linear}47.26%{transform:rotate(-4.5deg);animation-timing-function:linear}47.74%{transform:rotate(-0.0deg);animation-timing-function:linear}48.23%{transform:rotate(4.5deg);animation-timing-function:linear}48.71%{transform:rotate(9.0deg);animation-timing-function:linear}49.19%{transform:rotate(13.5deg);animation-timing-function:linear}49.68%{transform:rotate(18.0deg);animation-timing-function:linear}50.16%{transform:rotate(12.6deg);animation-timing-function:linear}50.65%{transform:rotate(7.2deg);animation-timing-function:linear}51.13%{transform:rotate(-1.8deg);animation-timing-function:linear}51.61%{transform:rotate(-10.8deg);animation-timing-function:linear}52.1%{transform:rotate(-15.3deg);animation-timing-function:linear}52.58%{transform:rotate(-19.8deg);animation-timing-function:linear}53.06%{transform:rotate(-20.2deg);animation-timing-function:linear}53.55%{transform:rotate(-18.0deg);animation-timing-function:linear}54.03%{transform:rotate(-13.5deg);animation-timing-function:linear}54.52%{transform:rotate(-9.0deg);animation-timing-function:linear}55%{transform:rotate(-4.5deg);animation-timing-function:linear}55.48%{transform:rotate(0.0deg);animation-timing-function:linear}55.97%{transform:rotate(4.5deg);animation-timing-function:linear}56.45%{transform:rotate(9.0deg);animation-timing-function:linear}56.94%{transform:rotate(13.5deg);animation-timing-function:linear}57.42%{transform:rotate(18.0deg);animation-timing-function:linear}57.9%{transform:rotate(12.6deg);animation-timing-function:linear}58.39%{transform:rotate(7.2deg);animation-timing-function:linear}58.87%{transform:rotate(-1.8deg);animation-timing-function:linear}59.35%{transform:rotate(-10.8deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.55%{transform:rotate(0deg);animation-timing-function:ease-in-out}65.16%{transform:rotate(-100deg);animation-timing-function:ease-in-out}66.13%{transform:rotate(-88deg);animation-timing-function:ease-in-out}67.29%{transform:rotate(-106deg);animation-timing-function:ease-in-out}69.23%{transform:rotate(-88deg);animation-timing-function:ease-in-out}70.65%{transform:rotate(-100deg);animation-timing-function:ease-in-out}72.58%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(22deg);animation-timing-function:ease-in-out}77.74%{transform:rotate(-22deg);animation-timing-function:ease-in-out}81.61%{transform:rotate(22deg);animation-timing-function:ease-in-out}85.48%{transform:rotate(-22deg);animation-timing-function:ease-in-out}89.35%{transform:rotate(22deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-oarmF{0%{transform:rotate(0deg);animation-timing-function:ease-in-out}20.65%{transform:rotate(0deg);animation-timing-function:ease-in-out}22.26%{transform:rotate(26deg);animation-timing-function:ease-in-out}23.87%{transform:rotate(-46deg);animation-timing-function:ease-in-out}27.74%{transform:rotate(0deg);animation-timing-function:ease-in-out}41.94%{transform:rotate(0deg);animation-timing-function:ease-in-out}43.87%{transform:rotate(0.0deg);animation-timing-function:linear}44.35%{transform:rotate(4.5deg);animation-timing-function:linear}44.84%{transform:rotate(9.0deg);animation-timing-function:linear}45.32%{transform:rotate(13.5deg);animation-timing-function:linear}45.81%{transform:rotate(18.0deg);animation-timing-function:linear}46.29%{transform:rotate(12.6deg);animation-timing-function:linear}46.77%{transform:rotate(7.2deg);animation-timing-function:linear}47.26%{transform:rotate(-1.8deg);animation-timing-function:linear}47.74%{transform:rotate(-10.8deg);animation-timing-function:linear}48.23%{transform:rotate(-15.3deg);animation-timing-function:linear}48.71%{transform:rotate(-19.8deg);animation-timing-function:linear}49.19%{transform:rotate(-20.2deg);animation-timing-function:linear}49.68%{transform:rotate(-18.0deg);animation-timing-function:linear}50.16%{transform:rotate(-13.5deg);animation-timing-function:linear}50.65%{transform:rotate(-9.0deg);animation-timing-function:linear}51.13%{transform:rotate(-4.5deg);animation-timing-function:linear}51.61%{transform:rotate(0.0deg);animation-timing-function:linear}52.1%{transform:rotate(4.5deg);animation-timing-function:linear}52.58%{transform:rotate(9.0deg);animation-timing-function:linear}53.06%{transform:rotate(13.5deg);animation-timing-function:linear}53.55%{transform:rotate(18.0deg);animation-timing-function:linear}54.03%{transform:rotate(12.6deg);animation-timing-function:linear}54.52%{transform:rotate(7.2deg);animation-timing-function:linear}55%{transform:rotate(-1.8deg);animation-timing-function:linear}55.48%{transform:rotate(-10.8deg);animation-timing-function:linear}55.97%{transform:rotate(-15.3deg);animation-timing-function:linear}56.45%{transform:rotate(-19.8deg);animation-timing-function:linear}56.94%{transform:rotate(-20.3deg);animation-timing-function:linear}57.42%{transform:rotate(-18.0deg);animation-timing-function:linear}57.9%{transform:rotate(-13.5deg);animation-timing-function:linear}58.39%{transform:rotate(-9.0deg);animation-timing-function:linear}58.87%{transform:rotate(-4.5deg);animation-timing-function:linear}59.35%{transform:rotate(-0.0deg);animation-timing-function:ease-in-out}61.29%{transform:rotate(0deg);animation-timing-function:ease-in-out}63.55%{transform:rotate(0deg);animation-timing-function:ease-in-out}65.16%{transform:rotate(100deg);animation-timing-function:ease-in-out}66.13%{transform:rotate(112deg);animation-timing-function:ease-in-out}67.29%{transform:rotate(94deg);animation-timing-function:ease-in-out}69.23%{transform:rotate(112deg);animation-timing-function:ease-in-out}70.65%{transform:rotate(100deg);animation-timing-function:ease-in-out}72.58%{transform:rotate(0deg);animation-timing-function:ease-in-out}73.87%{transform:rotate(-22deg);animation-timing-function:ease-in-out}77.74%{transform:rotate(22deg);animation-timing-function:ease-in-out}81.61%{transform:rotate(-22deg);animation-timing-function:ease-in-out}85.48%{transform:rotate(22deg);animation-timing-function:ease-in-out}89.35%{transform:rotate(-22deg);animation-timing-function:ease-in-out}91.29%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+@keyframes k-mflat{0%{opacity:1}18.71%{opacity:1}18.77%{opacity:0}100%{opacity:0}}
+@keyframes k-msmile{0%{opacity:0}18.65%{opacity:0}18.71%{opacity:1}32.26%{opacity:1}32.32%{opacity:0}38%{opacity:0}38.06%{opacity:1}100%{opacity:1}}
+@keyframes k-mo{0%{opacity:0}32.19%{opacity:0}32.26%{opacity:1}38.06%{opacity:1}38.13%{opacity:0}100%{opacity:0}}
+@keyframes k-pbrow{0%{transform:translateY(0px);animation-timing-function:ease-in-out}31.61%{transform:translateY(0px);animation-timing-function:ease-in-out}32.58%{transform:translateY(-4px);animation-timing-function:ease-in-out}37.74%{transform:translateY(-4px);animation-timing-function:ease-in-out}38.71%{transform:translateY(0px);animation-timing-function:ease-in-out}100%{transform:translateY(0px);animation-timing-function:ease-in-out}}
+@keyframes k-cbrow{0%{transform:translateY(0px);animation-timing-function:ease-in-out}31.61%{transform:translateY(0px);animation-timing-function:ease-in-out}32.58%{transform:translateY(-8px);animation-timing-function:ease-in-out}37.74%{transform:translateY(-8px);animation-timing-function:ease-in-out}38.71%{transform:translateY(0px);animation-timing-function:ease-in-out}100%{transform:translateY(0px);animation-timing-function:ease-in-out}}
+@keyframes k-peye{0%{transform:scaleY(1)}12.9%{transform:scaleY(1)}13.42%{transform:scaleY(0.1)}14.06%{transform:scaleY(1)}38.71%{transform:scaleY(1)}39.23%{transform:scaleY(0.1)}39.87%{transform:scaleY(1)}55.48%{transform:scaleY(1)}56%{transform:scaleY(0.1)}56.65%{transform:scaleY(1)}72.26%{transform:scaleY(1)}72.77%{transform:scaleY(0.1)}73.42%{transform:scaleY(1)}83.87%{transform:scaleY(1)}84.39%{transform:scaleY(0.1)}85.03%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+@keyframes k-ceye{0%{transform:scaleY(0.1)}12.26%{transform:scaleY(0.1)}12.9%{transform:scaleY(1)}13.55%{transform:scaleY(0.1)}14.52%{transform:scaleY(1)}15.16%{transform:scaleY(0.1)}16.13%{transform:scaleY(1)}41.29%{transform:scaleY(1)}41.81%{transform:scaleY(0.1)}42.45%{transform:scaleY(1)}58.06%{transform:scaleY(1)}58.58%{transform:scaleY(0.1)}59.23%{transform:scaleY(1)}72.9%{transform:scaleY(1)}73.42%{transform:scaleY(0.1)}74.06%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+@keyframes k-wake{0%{filter:grayscale(1) opacity(.38);animation-timing-function:ease-in-out}12.26%{filter:grayscale(1) opacity(.38);animation-timing-function:ease-in-out}15.48%{filter:grayscale(0) opacity(1)}100%{filter:grayscale(0) opacity(1)}}
+@keyframes k-glow{0%{opacity:0;animation-timing-function:ease-in-out}12.9%{opacity:0;animation-timing-function:ease-in-out}15.81%{opacity:.16}100%{opacity:.16}}
+@keyframes k-stretch{0%{transform:scale(1,1);animation-timing-function:ease-in-out}15.48%{transform:scale(1,1);animation-timing-function:ease-in-out}17.42%{transform:scale(.96,1.1);animation-timing-function:ease-in-out}19.35%{transform:scale(1,1)}100%{transform:scale(1,1)}}
+@keyframes k-spark{0%{opacity:0;transform:scale(.6)}12.9%{opacity:0;transform:scale(.6);animation-timing-function:ease-out}14.19%{opacity:1;transform:scale(1);animation-timing-function:ease-out}17.1%{opacity:0;transform:scale(1.35)}100%{opacity:0;transform:scale(1.35)}}
+@keyframes k-link{0%{opacity:0;stroke-dashoffset:0;animation-timing-function:linear}9.03%{opacity:0;stroke-dashoffset:0;animation-timing-function:linear}10%{opacity:1;stroke-dashoffset:-9;animation-timing-function:linear}15.81%{opacity:1;stroke-dashoffset:-63;animation-timing-function:linear}16.77%{opacity:0;stroke-dashoffset:-72;animation-timing-function:linear}100%{opacity:0;stroke-dashoffset:-72;animation-timing-function:linear}}
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -156,9 +283,9 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
   <header class="top">
     <a class="mark" href="#top" id="top">Pavan Bhargav Gajula</a>
     <nav aria-label="Sections">
+      <a href="#about">About</a>
       <a href="#work">Work</a>
       <a href="#publications">Publications</a>
-      <a href="#patents">Patents</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -167,14 +294,35 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
     <div class="hero">
       <p class="eyebrow mono">Researcher &middot; TCS Research &middot; Computer vision &amp; deep learning</p>
       <h1>Pavan Bhargav Gajula</h1>
-      <p class="lede">I research computer vision and deep learning, with applied work on generative models, representation learning and 3D.</p>
-      <ul class="links">
-        <li><a class="pill" href="https://scholar.google.com/citations?hl=en&amp;user=2rxs6u8AAAAJ" target="_blank" rel="noopener">Google Scholar &#8599;</a></li>
-        <li><a class="pill" href="https://github.com/pavanbhargav007" target="_blank" rel="noopener">GitHub &#8599;</a></li>
-        <li><a class="pill" href="https://www.linkedin.com/in/gpb007/" target="_blank" rel="noopener">LinkedIn &#8599;</a></li>
-        <li><a class="pill" href="#contact">Email</a></li>
-      </ul>
+      <div class="hero-row">
+        <div>
+        <p class="lede">I research computer vision and deep learning, with applied work on generative models, representation learning and 3D.</p>
+        <ul class="links">
+          <li><a class="pill" href="https://drive.google.com/file/d/1S4AbUf55BfniARs6GT3XCN2uT1ISGQn9/view?usp=sharing" target="_blank" rel="noopener">Resume (PDF) &#8599;</a></li>
+          <li><a class="pill" href="https://scholar.google.com/citations?hl=en&amp;user=2rxs6u8AAAAJ" target="_blank" rel="noopener">Google Scholar &#8599;</a></li>
+          <li><a class="pill" href="https://github.com/pavanbhargav007" target="_blank" rel="noopener">GitHub &#8599;</a></li>
+          <li><a class="pill" href="https://www.linkedin.com/in/gpb007/" target="_blank" rel="noopener">LinkedIn &#8599;</a></li>
+          <li><a class="pill" href="#contact">Email</a></li>
+        </ul>
+          </div>
+        <img class="portrait" src="img/pavan.jpg" width="480" height="480" alt="Illustrated portrait of Pavan Bhargav Gajula">
+      </div>
     </div>
+
+    <section id="about">
+      <div class="sec-head"><h2>About</h2></div>
+      <div class="about">
+        <div>
+          <p>I have been a researcher at TCS Research in Bengaluru for five years, on the computational creativity team. My work is in computer vision and deep learning: generative models, representation learning and 3D, mostly applied to visual art. Other interests include agents and reinforcement learning.</p>
+          <p>Before that I built tools to detect forged images and videos on a Ministry of Home Affairs project, which were deployed internally at the Bureau of Police Research and Development. I also mentor newer researchers on the team. Away from work: piano, ukulele, flute and sketching.</p>
+        </div>
+        <ul class="tl">
+          <li><span class="k">2021 &ndash; now</span>Researcher, TCS Research<span class="s">Computational creativity team, Bengaluru</span></li>
+          <li><span class="k">2020 &ndash; 2021</span>Project Associate, IIITDM Kancheepuram<span class="s">Ministry of Home Affairs sponsored project</span></li>
+          <li><span class="k">2016 &ndash; 2021</span>Integrated B.Tech + M.Tech, Computer Engineering<span class="s">IIITDM Kancheepuram</span></li>
+        </ul>
+      </div>
+    </section>
 
     <section id="work">
       <div class="sec-head"><h2>Selected work</h2></div>
@@ -187,40 +335,49 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
           <span class="tag plain">Presented in Barcelona</span>
           <div class="out">
             <a href="https://diglib.eg.org/server/api/core/bitstreams/6374342d-fbd1-4b50-90a9-5561ad1f226d/content" target="_blank" rel="noopener">Paper &#8599;</a>
+            <a href="https://drive.google.com/drive/folders/1AdVCIRi4uIfNwTbKH-ZBGNNUmWJ7evDS?usp=sharing" target="_blank" rel="noopener">Videos and extras &#8599;</a>
           </div>
         </div>
         <div class="body">
           <h3>Animating chairs, planters and lamps that have faces</h3>
           <p>Facial expression transfer and automatic rigging are trained on human and animal bodies. Point them at a chair with a face and they break. We built a workflow that animates such objects from a single RGB video, and documented where each existing stage fails.</p>
           <p>The fixes are a face for the object grounded in the FLAME head model, an open-mouth surface deformation that stops the lips from gluing together, and semantic rigging with SMPL-X motion retargeting.</p>
+          <p class="role"><span class="mono">My role</span>Built the end-to-end workflow, including the object-face synthesis, the open-mouth deformation, and the rigging and motion retargeting stages.</p>
           <div class="video"><iframe src="https://drive.google.com/file/d/1xSRV2jT6NI7l2c0MOSv8wsTwB6yQvQIZ/preview" title="Teaser video: 3D animation of anthropomorphized objects" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 
-          <figure class="fig white"><div class="frame"><img src="img/chair.jpg" width="1400" height="433" alt="A wooden chair with a face walking and changing expression across four frames"></div><figcaption class="cap mono">A chair takes on the expressions and gait of a human performer.</figcaption></figure>
+          <figure class="fig"><div class="frame"><svg class="chairanim" data-obj="0" viewBox="0 0 720 290" role="img" aria-label="Animation: a performer points at a grey, lifeless object. It wakes up, then copies the performer a beat later as they hop, look surprised, smile, walk, dance and moonwalk back. A chair and a planter take turns.">
+<g class="a scene">
+<path d="M40 263H680" fill="none" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>
+<path class="a link lk o0 o1" d="M176 118Q262 62 338 108" stroke-width="4" stroke-dasharray="1 17"/>
+<path class="a link lk o2" d="M176 118Q270 96 344 172" stroke-width="4" stroke-dasharray="1 17"/>
+<g class="a travel">
+<ellipse cx="124" cy="263" rx="34" ry="4" fill="var(--fg)" opacity=".1"/>
+<g transform="translate(120,197)"><g class="a root">
+<g transform="translate(0,-52)"><g class="a armF"><path class="ln far" d="M0 0V26"/><g transform="translate(0,26) rotate(-14)"><path class="ln far" d="M0 0V24"/><circle class="mk" cy="24" r="3.6"/></g></g></g><g class="a thB"><path class="ln far" d="M0 0V32"/><g transform="translate(0,32)"><g class="a knB"><path class="ln far" d="M0 0V32H11"/><circle class="mk" r="3.4"/></g></g></g>
+<path class="ln" d="M0 0V-58"/>
+<g class="a thA"><path class="ln" d="M0 0V32"/><g transform="translate(0,32)"><g class="a knA"><path class="ln" d="M0 0V32H11"/><circle class="mk" r="3.4"/></g></g></g>
+<circle class="ln" cx="2" cy="-83" r="24" style="fill:var(--surface)"/>
+<g transform="translate(6,-87)"><g class="a peye" fill="var(--fg)"><circle cx="-8" r="3.2"/><circle cx="8" r="3.2"/></g></g>
+<g class="a pbrow"><path class="ln" style="stroke-width:3" d="M-6 -97H1M11 -97H18"/></g>
+<g transform="translate(6,-73)" class="ln" style="stroke-width:3.5"><path class="a mflat" d="M-6 0H6"/><path class="a msmile" d="M-9 -3Q0 8 9 -3"/><circle class="a mo" r="4.4"/></g>
+<g transform="translate(0,-52)"><g class="a armN"><path class="ln" d="M0 0V26"/><g transform="translate(0,26) rotate(-14)"><path class="ln" d="M0 0V24"/><circle class="mk" cy="24" r="3.6"/></g></g></g>
+</g></g>
+</g>
+<g class="a lag travel"><g class="poke">
+<g class="obj o0"><ellipse cx="400" cy="263" rx="74" ry="5" fill="var(--fg)" opacity=".1"/><g transform="translate(390,205) scale(.9)"><g class="a lag root"><g transform="translate(-5,-170)"><g class="a spark" stroke-width="5"><path d="M0 0V-18M-39 6L-51 -8M39 2L51 -12"/></g></g><g class="a wake"><g transform="translate(-42,-22) scale(1)"><g class="a lag thB"><rect class="c4" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knB"><rect class="c4" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c4" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g transform="translate(36,-28) scale(1)"><g class="a lag thA"><rect class="c4" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knA"><rect class="c4" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c4" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g class="a stretch"><g transform="skewY(-4)"><rect class="c1" x="-50" y="-154" width="90" height="120" rx="15"/><g transform="translate(-5,-109) scale(1)"><g class="a ceye"><circle cx="-19" r="11.5" fill="#fff"/><circle cx="19" r="11.5" fill="#fff"/><g class="pup" fill="#14141c"><circle cx="-19" cy="1" r="4.8"/><circle cx="19" cy="1" r="4.8"/></g></g><g class="a lag cbrow"><path class="cf" d="M-31 -19Q-20 -25 -9 -20M9 -20Q20 -25 31 -19"/></g><g transform="translate(0,33)"><path class="a lag mflat cf" d="M-11 0H11"/><path class="a lag msmile cff" d="M-16 -4Q0 18 16 -4Z"/><ellipse class="a lag mo cff" rx="7" ry="9.5"/></g></g></g><path class="c3" d="M-50 -38L-26 -9V5L-50 -24Z"/><path class="c2" d="M-50 -38L40 -44L72 -15L-26 -9Z"/><path class="c3" d="M-26 -9L72 -15V-1L-26 5Z"/></g><g transform="translate(-18,0) scale(1)"><g class="a lag thA"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knA"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c3" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g transform="translate(63,-6) scale(1)"><g class="a lag thB"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knB"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c3" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g></g></g></g></g>
+<g class="obj o1"><ellipse cx="390" cy="263" rx="58" ry="5" fill="var(--fg)" opacity=".1"/><g transform="translate(390,205) scale(.9)"><g class="a lag root"><g transform="translate(0,-174)"><g class="a spark" stroke-width="5"><path d="M0 0V-18M-39 6L-51 -8M39 2L51 -12"/></g></g><g class="a wake"><path class="a glow" d="M-56 -62H56L96 62H-96Z"/><g transform="translate(-17,0) scale(1)"><g class="a lag thA"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knA"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c3" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g transform="translate(17,0) scale(1)"><g class="a lag thB"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knB"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c3" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g class="a stretch"><rect class="c4" x="-38" y="-13" width="76" height="15" rx="7"/><rect class="c3" x="-5" y="-70" width="10" height="60"/><path class="c1 rj" d="M-32 -154H32L56 -68H-56Z"/><g transform="translate(0,-112) scale(0.84)"><g class="a ceye"><circle cx="-19" r="11.5" fill="#fff"/><circle cx="19" r="11.5" fill="#fff"/><g class="pup" fill="#14141c"><circle cx="-19" cy="1" r="4.8"/><circle cx="19" cy="1" r="4.8"/></g></g><g class="a lag cbrow"><path class="cf" d="M-31 -19Q-20 -25 -9 -20M9 -20Q20 -25 31 -19"/></g><g transform="translate(0,33)"><path class="a lag mflat cf" d="M-11 0H11"/><path class="a lag msmile cff" d="M-16 -4Q0 18 16 -4Z"/><ellipse class="a lag mo cff" rx="7" ry="9.5"/></g></g></g></g></g></g></g>
+<g class="obj o2"><ellipse cx="390" cy="263" rx="52" ry="5" fill="var(--fg)" opacity=".1"/><g transform="translate(390,222.7) scale(.9)"><g class="a lag root"><g transform="translate(0,-196)"><g class="a spark" stroke-width="5"><path d="M0 0V-18M-39 6L-51 -8M39 2L51 -12"/></g></g><g class="a wake"><g transform="translate(-17,0) scale(0.7)"><g class="a lag thA"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knA"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c3" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g transform="translate(17,0) scale(0.7)"><g class="a lag thB"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><g transform="translate(0,30)"><g class="a lag knB"><rect class="c3" x="-6" y="-4" width="12" height="38" rx="6"/><rect class="c3" x="-6" y="26" width="21" height="9" rx="4.5"/></g></g></g></g><g class="a stretch"><g transform="translate(-45,-58) rotate(50)"><g class="a lag oarmF"><path class="lm" d="M0 0V20"/><g transform="translate(0,20) rotate(10)"><path class="lm" d="M0 0V16"/><ellipse class="c2" cy="23" rx="5.5" ry="9"/></g></g></g><g transform="translate(45,-58) rotate(-50)"><g class="a lag oarmN"><path class="lm" d="M0 0V20"/><g transform="translate(0,20) rotate(-10)"><path class="lm" d="M0 0V16"/><ellipse class="c2" cy="23" rx="5.5" ry="9"/></g></g></g><g transform="translate(0,-106)"><path class="c4" transform="rotate(-78) scale(0.72)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/><path class="c4" transform="rotate(78) scale(0.72)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/><path class="c2" transform="rotate(-52) scale(0.9)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/><path class="c2" transform="rotate(52) scale(0.9)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/><path class="c4" transform="rotate(-26) scale(1)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/><path class="c4" transform="rotate(26) scale(1)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/><path class="c2" transform="rotate(0) scale(1.08)" d="M0 0C-20 -28 -16 -62 0 -84C16 -62 20 -28 0 0Z"/></g><path class="c1 rj" d="M-50 -94H50L37 -6H-37Z"/><rect class="c3" x="-60" y="-114" width="120" height="21" rx="8"/><g transform="translate(0,-54) scale(0.82)"><g class="a ceye"><circle cx="-19" r="11.5" fill="#fff"/><circle cx="19" r="11.5" fill="#fff"/><g class="pup" fill="#14141c"><circle cx="-19" cy="1" r="4.8"/><circle cx="19" cy="1" r="4.8"/></g></g><g class="a lag cbrow"><path class="cf" d="M-31 -19Q-20 -25 -9 -20M9 -20Q20 -25 31 -19"/></g><g transform="translate(0,33)"><path class="a lag mflat cf" d="M-11 0H11"/><path class="a lag msmile cff" d="M-16 -4Q0 18 16 -4Z"/><ellipse class="a lag mo cff" rx="7" ry="9.5"/></g></g></g></g></g></g></g>
+</g></g>
+</g>
+</svg></div><figcaption class="cap mono">Illustration: a performer brings a chair and a planter to life in turn, and each copies their expressions and movement.<span class="anim-hint"> Click the object to make it hop.</span><button class="replay" type="button">Replay</button></figcaption></figure>
+          <details class="more"><summary>More figures: results, workflow, faces, body motion</summary>
+          <figure class="fig white"><div class="frame"><img src="img/chair.jpg" width="1400" height="433" loading="lazy" alt="A wooden chair with a face walking and changing expression across four frames"></div><figcaption class="cap mono">Result: a chair takes on the expressions and gait of a human performer.</figcaption></figure>
           <figure class="fig white"><div class="frame"><img src="img/workflow.jpg" width="1800" height="690" loading="lazy" alt="Workflow diagram: asset synthesis, hybrid capture, topology-agnostic facial deformation, semantic rigging and skinning, output animation"></div><figcaption class="cap mono">The end-to-end workflow, from a text prompt and a video to an animated object.</figcaption></figure>
           <div class="grid2">
             <figure class="fig"><div class="frame"><img src="img/expressions.jpg" width="1161" height="422" loading="lazy" alt="A human face on the left and the chair's matching expression on the right, in six frames"></div><figcaption class="cap mono">Source face (left) and target (right)</figcaption></figure>
             <figure class="fig"><div class="frame"><img src="img/body.jpg" width="1400" height="346" loading="lazy" alt="A human body motion on top and the potted plant character repeating it below"></div><figcaption class="cap mono">Body motion retargeted onto a planter</figcaption></figure>
           </div>
-        </div>
-      </article>
-
-      <article class="project">
-        <div class="meta">
-          <span class="tag">ECCV 2026 Workshops &middot; AI4VA</span>
-          <span class="tag plain">Poster</span>
-          <div class="out">
-            <a href="https://openreview.net/pdf?id=ZH79sLBqgb" target="_blank" rel="noopener">Paper &#8599;</a>
-          </div>
-        </div>
-        <div class="body">
-          <h3>Spatial Reflections: mosaics on 3D surfaces</h3>
-          <p>Mosaics of artworks are usually built for a flat image. This work asks what happens when the canvas is a 3D model. The method rebuilds a model's UV texture map as a mosaic of paintings, so the whole object is encased in artworks. Each painting keeps its aspect ratio, and the border around it acts as grout.</p>
-          <p>Two fixes make it work. Each UV island is rotated to match the direction of its object, found with PCA, so paintings do not appear upside down. Small objects get a larger share of the texture map, set by their volume against the whole model, so a painting on a wall stays recognizable. On a Starry Night view in a 3D Van Gogh's Bedroom, resizing lowered LPIPS from 0.32 to 0.12.</p>
-          <p>We tested it on a tiger, a sea house and the Bedroom scene with 18 objects, using 78,946 paintings from WikiArt.</p>
-
-          <figure class="fig white"><div class="frame"><img src="img/spatial-tiger.jpg" width="1490" height="595" loading="lazy" alt="A 3D tiger model encased in mosaics of paintings, with callouts to the paintings used on the head, paw, tail and body"></div><figcaption class="cap mono">A tiger encased in paintings. Callouts show the paintings on each part.</figcaption></figure>
-          <figure class="fig white"><div class="frame"><img src="img/spatial-pipeline.jpg" width="1475" height="575" loading="lazy" alt="Pipeline: UV texture map extraction, UV map manipulation with orientation matching and object-based resizing, segmentation, color and structure based retrieval, 3D spatial reflection"></div><figcaption class="cap mono">The pipeline: fix the UV map, segment it, retrieve paintings by color and structure, wrap it back on the model.</figcaption></figure>
-          <figure class="fig white"><div class="frame"><img src="img/spatial-starry.jpg" width="1275" height="320" loading="lazy" alt="Starry Night painting in a 3D room: the input view, the output without UV resizing where the painting is lost, and the output with UV resizing where it is recognizable"></div><figcaption class="cap mono">Why resizing matters: without it the painting on the wall is lost.</figcaption></figure>
+          </details>
         </div>
       </article>
 
@@ -240,6 +397,21 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
           <p>Neural networks tend to group paintings by what they show. Style is a different question, and people disagree about its definition. This work lets a person steer the clustering with a few rounds of feedback, and re-aligns the representation itself so the groups follow that person's idea of style.</p>
           <p>We compared six style representations under two definitions of style. With simulated expert feedback, Adjusted Rand Index on WikiArt-4k rose from about 0.25 to about 0.75 using contrastive style descriptors. Some representations bend to feedback easily and others hardly move, so the choice of representation matters as much as the feedback.</p>
 
+          <p class="role"><span class="mono">My role</span>Built the feedback framework (centroid projection and encoder training) and ran the comparison across six style representations.</p>
+          <figure class="fig sortdemo">
+            <div class="sd-bar">
+              <button type="button" class="pill" id="sd-step">Give feedback</button>
+              <button type="button" class="pill" id="sd-play">Auto-play</button>
+              <button type="button" class="pill" id="sd-reset">Reset</button>
+              <span class="lbl mono">Representation</span>
+              <button type="button" class="pill" id="sd-soft" aria-pressed="true">Responsive</button>
+              <button type="button" class="pill" id="sd-stiff" aria-pressed="false">Stubborn</button>
+            </div>
+            <div class="frame"><svg id="sd-svg" viewBox="0 0 748 181" role="img" aria-label="Interactive illustration: 150 colored squares, one per artwork, in five outlined clusters. Feedback moves squares so each cluster ends up with one color."></svg></div>
+            <p class="sd-status" id="sd-status" aria-live="polite"></p>
+            <figcaption class="cap">Illustration, not data from the paper. Each square is an artwork colored by its art movement, and each box is a cluster. Click a square that sits in the wrong box, or press Give feedback. One piece of feedback re-aligns the representation, so similar artworks move with it. A stubborn representation barely moves.</figcaption>
+          </figure>
+          <details class="more"><summary>More figures: clustering maps and collages from the paper</summary>
           <figure class="fig" aria-live="polite">
             <div class="seg" role="group" aria-label="Amount of feedback shown">
               <button type="button" aria-pressed="true" data-src="img/map-0.jpg" data-cap="No feedback. Colors are scattered inside every cluster.">No feedback</button>
@@ -254,52 +426,57 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
             <figure class="fig"><div class="frame"><img src="img/collage-before.jpg" width="1500" height="750" loading="lazy" alt="Artwork collage grouped into clusters before feedback"></div><figcaption class="cap mono">Before feedback</figcaption></figure>
             <figure class="fig"><div class="frame"><img src="img/collage-after.jpg" width="1500" height="750" loading="lazy" alt="Artwork collage grouped into clusters after feedback"></div><figcaption class="cap mono">After complete feedback</figcaption></figure>
           </div>
+          </details>
         </div>
       </article>
 
       <article class="project">
         <div class="meta">
-          <span class="tag">CVPR 2025 AI Art Gallery</span>
-          <span class="tag plain">ICCV 2025 Workshops &middot; AI4VA</span>
-          <span class="tag plain">Oral presentation in Hawaii</span>
+          <span class="tag">ECCV 2026 Workshops &middot; AI4VA</span>
+          <span class="tag plain">ICCV 2025 Workshops &middot; Oral in Hawaii</span>
+          <span class="tag plain">CVPR 2025 AI Art Gallery</span>
           <div class="out">
+            <a href="https://openreview.net/pdf?id=ZH79sLBqgb" target="_blank" rel="noopener">Spatial paper &#8599;</a>
+            <a href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Composite_Reflections_ICCVW_2025_paper.html" target="_blank" rel="noopener">Composite paper &#8599;</a>
             <a href="https://thecvf-art.com/project.php?year=2025&amp;artist=composite-reflections&amp;id=854" target="_blank" rel="noopener">Artwork &#8599;</a>
-            <a href="https://openaccess.thecvf.com/content/ICCV2025W/AI4VA/html/Dangeti_Composite_Reflections_ICCVW_2025_paper.html" target="_blank" rel="noopener">Paper &#8599;</a>
           </div>
         </div>
         <div class="body">
-          <h3>Composite Reflections</h3>
-          <p>A mosaic method where the finished artwork stays tied to the pieces it is built from. A vision-language model (InternVL2) curates a themed collection, such as an apple-themed set from WikiArt. The target artwork is cut into a grid, and each cell is filled by color-histogram retrieval followed by structural similarity (SSIM) among the closest color matches. Pieces keep their aspect ratio through color-matched borders instead of being cropped. The method is also covered by a filed patent.</p>
-          <p>Three examples from the paper: Picasso's self-portrait rebuilt from 485 of his own works, Renoir's <em>Bal du moulin de la Galette</em> from 1,910 Impressionist works, and Van Gogh's <em>Apples</em> from 306 apple-themed works.</p>
-
-          <figure class="fig white"><div class="frame"><img src="img/composite-examples.jpg" width="1760" height="645" loading="lazy" alt="Three artworks, each shown as an input, its mosaic recreation, a zoomed snippet of tiny artworks, and sample tiles"></div><figcaption class="cap mono">Picasso, Renoir and Van Gogh, each rebuilt from related artworks.</figcaption></figure>
-          <figure class="fig white"><div class="frame"><img src="img/composite-pipeline.jpg" width="1770" height="635" loading="lazy" alt="Pipeline diagram: curated artwork collection, segment color histogram, cosine similarity, top retrievals, structural similarity, replacement segment"></div><figcaption class="cap mono">The pipeline: curate, match by color, choose by structure, replace the segment.</figcaption></figure>
+          <h3>Composite and Spatial Reflections: artworks rebuilt from artworks</h3>
+          <p>Composite Reflections is a mosaic method where the finished artwork stays tied to the pieces it is built from. A vision-language model (InternVL2) curates a themed collection, and each cell of the target is filled by color-histogram retrieval followed by structural similarity (SSIM). Pieces keep their aspect ratio through color-matched borders instead of being cropped. Picasso's self-portrait, for example, is rebuilt from 485 of his own works. The method is also covered by a filed patent.</p>
+          <p>Spatial Reflections takes the idea to 3D. It rebuilds a model's UV texture map as a mosaic of paintings, so the whole object is encased in artworks. Each UV island is rotated to match the direction of its object, found with PCA, and small objects get a larger share of the texture map, so a painting on a wall stays recognizable. On a Starry Night view in a 3D Van Gogh's Bedroom, resizing lowered LPIPS from 0.32 to 0.12. We tested it on a tiger, a sea house and the Bedroom scene with 18 objects, using 78,946 paintings from WikiArt.</p>
+          <p class="role"><span class="mono">My role</span>Contributed to the pipeline, mainly the color and structural similarity measures that match retrieved artworks to segments.</p>
+          
+          <figure class="fig white"><div class="frame"><img src="img/composite-examples.jpg" width="1760" height="645" loading="lazy" alt="Three artworks, each shown as an input, its mosaic recreation, a zoomed snippet of tiny artworks, and sample tiles"></div><figcaption class="cap mono">Composite Reflections: Picasso, Renoir and Van Gogh, each rebuilt from related artworks.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-tiger.jpg" width="1490" height="595" loading="lazy" alt="A 3D tiger model encased in mosaics of paintings, with callouts to the paintings used on the head, paw, tail and body"></div><figcaption class="cap mono">Spatial Reflections: a tiger encased in paintings. Callouts show the paintings on each part.</figcaption></figure>
+          <details class="more"><summary>More figures: both pipelines, why resizing matters</summary>
+          <figure class="fig white"><div class="frame"><img src="img/composite-pipeline.jpg" width="1770" height="635" loading="lazy" alt="Pipeline diagram: curated artwork collection, segment color histogram, cosine similarity, top retrievals, structural similarity, replacement segment"></div><figcaption class="cap mono">Composite pipeline: curate, match by color, choose by structure, replace the segment.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-pipeline.jpg" width="1475" height="575" loading="lazy" alt="Pipeline: UV texture map extraction, UV map manipulation with orientation matching and object-based resizing, segmentation, color and structure based retrieval, 3D spatial reflection"></div><figcaption class="cap mono">Spatial pipeline: fix the UV map, segment it, retrieve paintings by color and structure, wrap it back on the model.</figcaption></figure>
+          <figure class="fig white"><div class="frame"><img src="img/spatial-starry.jpg" width="1275" height="320" loading="lazy" alt="Starry Night painting in a 3D room: the input view, the output without UV resizing where the painting is lost, and the output with UV resizing where it is recognizable"></div><figcaption class="cap mono">Why resizing matters: without it the painting on the wall is lost.</figcaption></figure>
+          </details>
         </div>
       </article>
 
-      <article class="project">
-        <div class="meta">
-          <span class="tag">CVPR 2025 AI Art Gallery</span>
-          <div class="out"><a href="https://thecvf-art.com/project.php?year=2025&amp;artist=ofstylebeesandbeehives&amp;id=868" target="_blank" rel="noopener">Artwork &#8599;</a><a href="https://youtu.be/cWCKd5NgzlE" target="_blank" rel="noopener">Animation &#8599;</a></div>
+      <div class="sec-head sub-head"><h2>More work</h2></div>
+      <details class="mw">
+        <summary><span class="tag">MUNCH Museum, Oslo &middot; 2023&ndash;24</span><span class="mt">Draw to discover: sketch-based retrieval of Munch's art<span class="ms">An interactive app where a museum visitor draws and the system finds related works by Edvard Munch.</span></span><span class="mx" aria-hidden="true"></span></summary>
+        <div class="mwb body">
+          <p>A project with the MUNCH Museum in Oslo. A museum shows only part of an artist's work at any time, so much of Edvard Munch's oeuvre stays out of sight. We built an art retrieval system that lets visitors explore it in an interactive way.</p>
+          <p>The app has a canvas where the visitor can draw anything. The system retrieves relevant paintings from Munch's works and shows them, by matching CLIP image and text embeddings against a vector database.</p>
         </div>
-        <div class="body">
-          <h3>Of Style Bees and Beehives</h3>
+      </details>
+      <details class="mw">
+        <summary><span class="tag">CVPR 2025 AI Art Gallery</span><span class="mt">Of Style Bees and Beehives<span class="ms">An animation that uses a beehive as an allegory for how a model clusters artworks by style.</span></span><span class="mx" aria-hidden="true"></span></summary>
+        <div class="mwb body">
+          <p class="out"><a href="https://thecvf-art.com/project.php?year=2025&amp;artist=ofstylebeesandbeehives&amp;id=868" target="_blank" rel="noopener">Artwork &#8599;</a><a href="https://youtu.be/cWCKd5NgzlE" target="_blank" rel="noopener">Animation &#8599;</a></p>
           <p>An animation that uses a beehive as an allegory. When artworks are clustered by a neural style representation, they gather around central style figures, and the style definition a model has learned decides how it sees the whole collection.</p>
           <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/cWCKd5NgzlE" title="Of Style Bees and Beehives, animation" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         </div>
-      </article>
-
-
-      <article class="project">
-        <div class="meta">
-          <span class="tag">ICCC 2024</span>
-          <span class="tag plain">First author</span>
-          <div class="out">
-            <a href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_100.pdf" target="_blank" rel="noopener">Paper &#8599;</a>
-          </div>
-        </div>
-        <div class="body">
-          <h3>Style-Frame: designing applications around artistic style</h3>
+      </details>
+      <details class="mw">
+        <summary><span class="tag">ICCC 2024</span><span class="mt">Style-Frame: designing applications around artistic style<span class="ms">A design framework for style-driven AI applications, worked through on 7,411 Edvard Munch artworks.</span></span><span class="mx" aria-hidden="true"></span></summary>
+        <div class="mwb body">
+          <p class="out"><a href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_100.pdf" target="_blank" rel="noopener">Paper &#8599;</a></p>
           <p>Generative models can restyle an image, imitate an artist, or group a museum's collection by style. Teams building such applications had little guidance on which technology fits which job. Style-Frame is a design framework with two parts: a conceptual model and a process model for applying it.</p>
           <p>The conceptual model has five dimensions: how the style is specified, how it is transformed, which generative technology is used, how the quality of the output is judged, and how the process itself is judged. The process model walks a team through six stages, from checking that style is really part of the problem to deploying and maintaining the result.</p>
           <p>We worked it through on the MUNCH Museum archive in Oslo, using 7,411 Edvard Munch artworks sorted into five style categories by shading and color. Two problems went through the framework: restyling a given image in Munch's style, and generating new images in his style under user-defined controls.</p>
@@ -307,27 +484,21 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
           <figure class="fig white"><div class="frame"><img src="img/styleframe-model.jpg" width="1800" height="725" loading="lazy" alt="Mind map of the Style-Frame conceptual model: style specification, style transformation, generative AI technologies, artifact quality evaluation, process quality evaluation"></div><figcaption class="cap mono">The conceptual model: five dimensions of a style-driven application.</figcaption></figure>
           <figure class="fig white"><div class="frame"><img src="img/styleframe-process.jpg" width="1780" height="385" loading="lazy" alt="Six-stage process model from checking whether artistic style is involved to developing, deploying and maintaining the application"></div><figcaption class="cap mono">The process model: six stages from problem check to deployment.</figcaption></figure>
         </div>
-      </article>
-
-      <article class="project">
-        <div class="meta">
-          <span class="tag">MHA sponsored project</span>
-          <span class="tag plain">IIITDM &middot; 2020&ndash;21</span>
-          <span class="tag plain">Deployed at BPR&amp;D</span>
-        </div>
-        <div class="body">
-          <h3>Detecting forged obscene images and videos</h3>
+      </details>
+      <details class="mw">
+        <summary><span class="tag">MHA project &middot; 2020&ndash;21</span><span class="mt">Detecting forged obscene images and videos<span class="ms">Image and audio models for a Ministry of Home Affairs project, with tools deployed at BPR&amp;D.</span></span><span class="mx" aria-hidden="true"></span></summary>
+        <div class="mwb body">
           <p>A Ministry of Home Affairs sponsored project, carried out with the Bureau of Police Research and Development. The aim was to catch forged adult content, such as deepfaked faces, before it spreads on social networks. A video is checked for obscenity and then for forgery, in both pictures and sound.</p>
           <p>Audio is usually ignored in video classification. We turned it into MEL spectrograms and classified them as images with EfficientNet-B2. Fine-tuning and focal loss with noisy-student weights lifted audio forgery accuracy from 88% to 94%, and fine-tuning VGG16 raised image obscenity accuracy from about 83% to 92%. Audio obscenity reached 93% and face forgery 92%.</p>
           <p>I also built File Gateway, a desktop tool for Windows and Linux that watches the filesystem and removes flagged media on its own, in about 19 seconds for a 3-minute video. The research and tool demos were presented at BPR&amp;D in Delhi, and the tools were deployed internally there for law-enforcement monitoring.</p>
 
           <figure class="fig white"><div class="frame"><img src="img/mha-pipeline.jpg" width="1560" height="712" loading="lazy" alt="Pipeline diagram: an input video is split into frames and audio, image and audio models vote on obscenity and on forgery, and a video is flagged only when it is both"></div><figcaption class="cap mono">Image and audio models vote separately on obscenity and on forgery. A video is flagged only when it is both.</figcaption></figure>
         </div>
-      </article>
+      </details>
     </section>
 
     <section id="publications">
-      <div class="sec-head"><h2>Publications</h2></div>
+      <div class="sec-head"><h2>Publications and patents</h2></div>
 
       <div class="year-block">
         <div class="year">2027</div>
@@ -359,28 +530,21 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
           <li><a class="t" href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_100.pdf" target="_blank" rel="noopener">Style-Frame: A Foundational Framework for Artistic Style-Driven Applications</a><span class="v">International Conference on Computational Creativity (ICCC) 2024</span></li>
         </ul>
       </div>
-    </section>
-
-    <section id="patents">
-      <div class="sec-head"><h2>Patents</h2></div>
-      <ul class="patents">
-        <li><span class="s">Filed</span><span>Methods and systems for style-based clustering of artworks with preference feedback</span></li>
-        <li><span class="s">Filed</span><span>Methods and Systems for Style-Based Clustering of Artworks by Aligning Neural Representations Through Centroid-Based Incorporation of Human Feedback</span></li>
-        <li><span class="s">Filed</span><span>Composite Reflections</span></li>
-        <li><span class="s">Filed</span><span>Method and system for designing style-based AI applications</span></li>
-        <li><span class="s">Filed</span><span>A system and method for art creation in collaborative and contemplative interaction with the artwork collection</span></li>
-      </ul>
+      <div class="year-block">
+        <div class="year">Patents</div>
+        <ul class="plist">
+          <li><span class="t">Methods and systems for style-based clustering of artworks with preference feedback</span><span class="v">Filed</span></li>
+          <li><span class="t">Methods and Systems for Style-Based Clustering of Artworks by Aligning Neural Representations Through Centroid-Based Incorporation of Human Feedback</span><span class="v">Filed</span></li>
+          <li><span class="t">Composite Reflections</span><span class="v">Filed</span></li>
+          <li><span class="t">Method and system for designing style-based AI applications</span><span class="v">Filed</span></li>
+          <li><span class="t">A system and method for art creation in collaborative and contemplative interaction with the artwork collection</span><span class="v">Filed</span></li>
+        </ul>
+      </div>
     </section>
 
     <section id="contact">
-      <div class="sec-head"><h2>About and contact</h2></div>
-      <div class="about">
-        <div>
-          <p>I have been a researcher at TCS Research in Bengaluru for five years, on the computational creativity team. My work is in computer vision and deep learning: generative models, representation learning and 3D, mostly applied to visual art. Other interests include agents and reinforcement learning.</p>
-          <p>I did my integrated B.Tech and M.Tech in Computer Engineering at IIITDM Kancheepuram, then stayed on as a project associate on a Ministry of Home Affairs project, building tools to detect forged images and videos that were deployed internally at the Bureau of Police Research and Development, before joining TCS. I also mentor newer researchers on the team.</p>
-          <p>Away from work: piano, ukulele, flute and sketching.</p>
-        </div>
-        <ul class="contact-list">
+      <div class="sec-head"><h2>Contact</h2></div>
+      <ul class="contact-list row">
           <li>
             <span class="k">Email</span>
             <div class="mail-row">
@@ -392,7 +556,6 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
           <li><span class="k">Code</span><a href="https://github.com/pavanbhargav007" target="_blank" rel="noopener">github.com/pavanbhargav007</a></li>
           <li><span class="k">Network</span><a href="https://www.linkedin.com/in/gpb007/" target="_blank" rel="noopener">linkedin.com/in/gpb007</a></li>
         </ul>
-      </div>
     </section>
   </main>
 
@@ -429,6 +592,55 @@ footer { padding-block: 72px 48px; color: var(--muted); font-size: .85rem; displ
     } catch (e) { selectMail(); copy.textContent = 'Press copy'; }
   });
 })();
+</script>
+<script>
+(function(){var svg=document.getElementById('sd-svg');if(!svg)return;
+var NS='http://www.w3.org/2000/svg',K=5,N=30,COLS=['#3a33e6','#f2a007','#12a594','#e5484d','#46a8e8'];
+var tiles=[],slots=[],boxes=[],count=0,soft=true,timer=0,seed=7;
+function rnd(){seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296;}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(rnd()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function place(t,k,j){t.k=k;t.j=j;slots[k][j]=t;t.el.style.transform='translate('+(17+k*148+(j%5)*25)+'px,'+(17+Math.floor(j/5)*25)+'px)';}
+function $(id){return document.getElementById(id);}
+for(var k=0;k<K;k++){var b=document.createElementNS(NS,'rect');b.setAttribute('class','box');b.setAttribute('x',8+k*148);b.setAttribute('y',8);b.setAttribute('width',140);b.setAttribute('height',165);b.setAttribute('rx',8);svg.appendChild(b);boxes.push(b);}
+for(var i=0;i<K*N;i++){var el=document.createElementNS(NS,'rect');el.setAttribute('class','tile');el.setAttribute('width',22);el.setAttribute('height',22);el.setAttribute('rx',3);svg.appendChild(el);
+ var t={el:el,c:0,k:0,j:0};tiles.push(t);(function(t){el.addEventListener('click',function(){stop();give(t);});})(t);}
+function reset(){seed=7;count=0;slots=[];var n=0;
+ for(var k=0;k<K;k++){slots.push([]);var cs=[];for(var c=0;c<K;c++){var m=c===k?10:5;while(m--)cs.push(c);}shuffle(cs);
+  for(var j=0;j<N;j++){var t=tiles[n++];t.c=cs[j];t.el.setAttribute('fill',COLS[t.c]);place(t,k,j);}}
+ update();}
+function into(t){var home=slots[t.c],pick=null;
+ for(var j=0;j<N;j++){var m=home[j];if(m.c!==t.c){if(!pick)pick=m;if(m.c===t.k){pick=m;break;}}}
+ if(!pick)return;var k=t.k,j0=t.j;place(t,pick.k,pick.j);place(pick,k,j0);svg.appendChild(t.el);}
+function misfits(c){return tiles.filter(function(t){return t.k!==t.c&&(c===undefined||t.c===c);});}
+function give(t){if(t.k===t.c)return;var c=t.c;t.el.classList.add('hot');setTimeout(function(){t.el.classList.remove('hot');},900);
+ into(t);var f=shuffle(misfits(c)).slice(0,soft?5:1);f.forEach(into);count++;update();}
+function update(){var ok=0,pure=[];for(var k=0;k<K;k++){var n=0;for(var j=0;j<N;j++)if(slots[k][j].c===k)n++;ok+=n;pure.push(n===N);boxes[k].style.stroke=n===N?COLS[k]:'';}
+ var p=Math.round(ok/(K*N)*100);
+ $('sd-status').innerHTML=p===100?'Sorted after <b>'+count+'</b> rounds of feedback.':'Feedback given: <b>'+count+'</b> &middot; Artworks in the right cluster: <b>'+p+'%</b>';
+ if(p===100)stop();}
+function step(){var m=misfits();if(m.length)give(m[Math.floor(rnd()*m.length)]);}
+function stop(){if(timer){clearInterval(timer);timer=0;$('sd-play').textContent='Auto-play';}}
+$('sd-step').addEventListener('click',function(){stop();step();});
+$('sd-play').addEventListener('click',function(){if(timer){stop();return;}if(!misfits().length)reset();this.textContent='Pause';step();timer=setInterval(step,1000);});
+$('sd-reset').addEventListener('click',function(){stop();reset();});
+function rep(s){soft=s;$('sd-soft').setAttribute('aria-pressed',s?'true':'false');$('sd-stiff').setAttribute('aria-pressed',s?'false':'true');}
+$('sd-soft').addEventListener('click',function(){rep(true);});$('sd-stiff').addEventListener('click',function(){rep(false);});
+reset();})();
+</script>
+<script>
+(function(){var s=document.querySelector('.chairanim');if(!s)return;var b=document.querySelector('.replay'),pk=s.querySelector('.poke'),n=0;
+var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function restart(){s.classList.remove('run','paused');void s.getBoundingClientRect();s.classList.add('run');}
+if(!still){
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){s.classList.add('run');s.classList.remove('paused');}else{s.classList.add('paused');}});},{threshold:.35}).observe(s);}else{s.classList.add('run');}
+s.addEventListener('animationiteration',function(e){if(e.animationName==='k-scene'){n=n?0:2;s.setAttribute('data-obj',n);}});
+if(b)b.addEventListener('click',restart);
+if(pk&&pk.animate)pk.addEventListener('click',function(){pk.animate([{transform:'translateY(0)',easing:'ease-out'},{transform:'translateY(-28px)',easing:'ease-in',offset:.45},{transform:'translateY(0)'}],{duration:430});});
+var raf=0;document.addEventListener('pointermove',function(e){if(e.pointerType==='touch'||raf)return;raf=requestAnimationFrame(function(){raf=0;
+var f=s.querySelector('.o'+n+' .ceye');if(!f)return;var r=f.getBoundingClientRect();if(!r.width)return;
+var dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=Math.sqrt(dx*dx+dy*dy)||1,k=Math.min(1,d/60);
+s.style.setProperty('--px',(dx/d*4.5*k).toFixed(1)+'px');s.style.setProperty('--py',(dy/d*3.5*k).toFixed(1)+'px');});});
+}})();
 </script>
 </body>
 </html>
